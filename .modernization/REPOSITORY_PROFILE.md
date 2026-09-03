@@ -17,6 +17,25 @@
 | CI | None found |
 | Containers | None found |
 
+## Project history and modernization posture
+
+The owner developed this repository approximately four to five years before the
+2026 modernization effort for a real wholesale grocery market. Development ended
+because of a budget cut, the product remained incomplete, and it was never
+deployed. The source was subsequently published in the owner's personal GitHub
+account.
+
+This lowers production migration risk: there are no live consumers, production
+data, or operational service-level commitments to preserve. It does not remove
+the need for disciplined changes. Purchase, sale, product, grocery, inventory,
+and reporting behavior encode real domain intent and should be characterized
+before substantial redesign.
+
+Modernization may therefore include defect correction and feature completion in
+addition to technical upgrades. When the existing code is ambiguous, record the
+assumption, define the intended business rule in a test or decision note, and
+keep behavioral work separate from mechanical framework migration.
+
 ## Business and architectural shape
 
 The application is a layered grocery ERP REST backend:
@@ -80,15 +99,17 @@ job integration was found. Actuator and Springdoc dependencies are present.
    toolchain, and green `clean verify` baseline as the canonical build entry.
 2. **Safety net:** characterize REST contracts, persistence mappings, startup,
    error handling, and purchase/sale stock effects.
-3. **Spring Boot 3 boundary:** 81 production imports use `javax.*`; moving to
+3. **Domain completion:** identify missing wholesale workflows and distinguish
+   deliberate scope from abandoned implementation before expanding the model.
+4. **Spring Boot 3 boundary:** 81 production imports use `javax.*`; moving to
    Boot 3 requires a coordinated Jakarta migration and compatible library lines.
-4. **Database evolution:** replace schema auto-update with an explicit,
+5. **Database evolution:** replace schema auto-update with an explicit,
    versioned migration strategy after capturing the current schema behavior.
-5. **Configuration:** externalize credentials and define clear local/test
+6. **Configuration:** externalize credentials and define clear local/test
    profiles without changing defaults accidentally.
-6. **Dependency cleanup:** remove redundant or misplaced declarations only after
+7. **Dependency cleanup:** remove redundant or misplaced declarations only after
    the baseline is green and each change can be verified.
-7. **Automation:** add CI after the canonical build command is reproducible.
+8. **Automation:** add CI after the canonical build command is reproducible.
 
 ## Recommended next phase
 
