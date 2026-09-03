@@ -66,9 +66,9 @@ Four service test classes contain nine Mockito-based unit tests:
 - `PurchaseServiceTest`
 - `SaleServiceTest`
 
-The wrapper baseline currently reaches test compilation, where ten references
-to Lombok-generated `builder()` methods fail. See
-`.modernization/TEST_BASELINE.md` for the exact result and current test gaps.
+The verified wrapper baseline compiles the application, runs all nine existing
+tests, and packages the executable JAR. See `.modernization/TEST_BASELINE.md`
+for the exact result and current test gaps.
 
 ## Modernization status
 

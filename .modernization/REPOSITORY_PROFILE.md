@@ -76,8 +76,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Modernization pressure points
 
-1. **Reproducibility:** keep the restored Maven wrapper and verified Java 17
-   toolchain as the canonical build entry point.
+1. **Reproducibility:** keep the restored Maven wrapper, verified Java 17
+   toolchain, and green `clean verify` baseline as the canonical build entry.
 2. **Safety net:** characterize REST contracts, persistence mappings, startup,
    error handling, and purchase/sale stock effects.
 3. **Spring Boot 3 boundary:** 81 production imports use `javax.*`; moving to
@@ -92,14 +92,13 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Recommended next phase
 
-Finish baseline repair by restoring Lombok annotation processing and executing
-`clean verify`. Do not upgrade Spring Boot in the same change. After the baseline
-is green, add targeted characterization tests and prepare an approved migration
-plan with small compatibility checkpoints.
+Add targeted characterization tests around behavior-sensitive seams, then
+prepare an approved migration plan with small compatibility checkpoints. Do not
+combine safety-net work with the Spring Boot upgrade.
 
 ## Discovery limits
 
 This profile is based on static inspection plus baseline commands. Production
-compilation and dependency resolution are verified. Runtime behavior, generated
-schema, packaged artifact, OpenAPI output, and test execution remain unverified
-because the existing tests fail during compilation.
+compilation, dependency resolution, the nine existing tests, and JAR packaging
+are verified. Runtime behavior, generated schema, PostgreSQL integration, and
+OpenAPI output remain unverified.

@@ -11,7 +11,7 @@
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Result | Production compile passes; test compile fails |
+| Result | Build success; 9 tests pass |
 
 ## Commands and observed result
 
@@ -21,14 +21,24 @@ under `~/.local`; wrapper 3.3.4 metadata and executable launcher scripts were
 then restored.
 
 The untouched project was first run with local Maven, then with the repaired
-wrapper. Both runs compiled all 53 production sources and failed while compiling
-the four test classes with the same 10 errors. Each error is an unresolved
-Lombok-generated `builder()` method on `Grocery`, `Product`, `GroceryDTO`, or
-`ProductDTO`.
+wrapper. Both runs compiled all 53 production sources and initially failed while
+compiling the four test classes with the same 10 unresolved Lombok-generated
+`builder()` references.
 
 The annotated classes do declare `@Builder`. The POM configures an explicit
-`annotationProcessorPaths` list but omits Lombok, so Lombok processing is the
-leading cause. This diagnosis must be verified by a minimal POM repair.
+`annotationProcessorPaths` list but omitted Lombok. Adding the existing Lombok
+dependency to that processor path resolved all 10 errors without changing
+application or test behavior.
+
+The final command completed successfully:
+
+```text
+$ ./mvnw clean verify
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
+```
+
+The build produced `target/grocery-0.0.1-SNAPSHOT.jar` (approximately 56 MB).
 
 Maven also reports a pre-existing model warning: the
 `properties-maven-plugin` declaration has no version.
@@ -64,10 +74,10 @@ No automated coverage was found for:
 
 No coverage measurement or CI workflow was found.
 
-## Exit criteria for baseline repair
+## Baseline repair result
 
-- The Java 17 and wrapper prerequisites above remain reproducible.
-- `./mvnw clean verify` completes and its test totals and failures are recorded.
-- Any pre-existing application/test failures are separated from bootstrap
-  failures and from regressions introduced by the repair.
-- No framework or application behavior changes are bundled into the repair.
+- Java 17 and Maven wrapper prerequisites are reproducible.
+- `./mvnw -version` reports Maven 3.9.16 and Temurin 17.0.20.1.
+- `./mvnw clean verify` succeeds with 9 passing tests.
+- The original bootstrap and test-compilation failures are recorded separately.
+- No framework version or application behavior was changed.
