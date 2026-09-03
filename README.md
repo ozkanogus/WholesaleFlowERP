@@ -4,6 +4,12 @@ SpringBootSampleERP is a sample grocery ERP backend built with Spring Boot. It
 manages groceries, products, purchases, sales, and the stock movements produced
 by purchase and sale operations.
 
+The code began several years ago as an unfinished application for a real
+wholesale grocery market. Budget constraints ended development before deployment,
+so it never went live and has no production data or production compatibility
+commitments. The repository now serves as both a modernization case study and a
+foundation that may be corrected and completed.
+
 > This repository is being used as a pilot for the
 > [Agentic Java Modernization](https://github.com/ozkanogus/agentic-java-modernization)
 > methodology. The current phase documents the existing system; it does not yet
@@ -73,9 +79,10 @@ for the exact result and current test gaps.
 ## Modernization status
 
 Discovery findings are recorded in
-`.modernization/REPOSITORY_PROFILE.md`. Dependency upgrades, Jakarta namespace
-changes, and production-code edits are intentionally deferred until the build
-baseline is reproducible and a migration plan is approved.
+`.modernization/REPOSITORY_PROFILE.md`. The build baseline is reproducible;
+characterization and migration planning come next. Because the application never
+entered production, verified defects and incomplete behavior may be corrected,
+but each change should document its intended business rule and remain reviewable.
 
 ## Contributing
 

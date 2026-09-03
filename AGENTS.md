@@ -2,9 +2,11 @@
 
 ## Purpose
 
-This repository is a modernization pilot. Preserve the grocery ERP's observable
-behavior while improving its build, tests, maintainability, and platform stack
-through small, independently reviewable changes.
+This repository is a modernization pilot based on an unfinished wholesale
+grocery application that was never deployed. Preserve understood business intent
+while improving its build, tests, behavior, maintainability, and platform stack
+through small, independently reviewable changes. Existing behavior is evidence,
+not an immutable production contract.
 
 ## Required workflow
 
@@ -22,7 +24,10 @@ through small, independently reviewable changes.
 - Do not combine build repair, dependency upgrades, Jakarta migration, and
   behavior changes in one commit or pull request.
 - Do not silently change REST paths, JSON contracts, validation, transaction
-  boundaries, persistence mappings, or stock-movement semantics.
+  boundaries, persistence mappings, or stock-movement semantics. Changes are
+  allowed when justified by a documented business rule or verified defect.
+- Mark assumptions where unfinished behavior has no reliable specification;
+  prefer a focused test that expresses the chosen rule.
 - Add characterization coverage before modifying poorly protected behavior.
 - Do not introduce production credentials or copy local secrets into tests.
 - Prefer project-native Maven commands and committed configuration.
