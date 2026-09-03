@@ -45,12 +45,11 @@ It also exposes `GET /api/sales/topSold/{groceryId}`.
 
 ## Running locally
 
-The committed Maven wrapper is currently incomplete and not executable on
-Unix-like systems. Until that is repaired, use a local Java 17 JDK and Maven:
+Use a Java 17 JDK and the committed Maven wrapper:
 
 ```bash
-mvn clean verify
-mvn spring-boot:run
+./mvnw clean verify
+./mvnw spring-boot:run
 ```
 
 The default application configuration expects PostgreSQL at
@@ -67,8 +66,8 @@ Four service test classes contain nine Mockito-based unit tests:
 - `PurchaseServiceTest`
 - `SaleServiceTest`
 
-The baseline cannot currently be executed on the analyzed machine because no
-JDK is installed and the Maven wrapper metadata is absent. See
+The wrapper baseline currently reaches test compilation, where ten references
+to Lombok-generated `builder()` methods fail. See
 `.modernization/TEST_BASELINE.md` for the exact result and current test gaps.
 
 ## Modernization status

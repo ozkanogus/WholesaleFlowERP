@@ -8,30 +8,30 @@
 | Date | 2026-09-04 |
 | Operating system | macOS 26.5.1, arm64 |
 | Declared Java | 17 |
-| Available Java | None |
-| Build entry point attempted | `sh mvnw -version` |
-| Result | Blocked before compilation |
+| Available Java | Temurin 17.0.20.1 |
+| Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
+| Build entry point | `./mvnw clean verify` |
+| Result | Production compile passes; test compile fails |
 
 ## Commands and observed result
 
-```text
-$ java -version
-Unable to locate a Java Runtime.
+The original checkout was blocked because no JDK was installed and the Maven
+wrapper metadata was absent. Temurin 17.0.20.1 and Maven 3.9.16 were installed
+under `~/.local`; wrapper 3.3.4 metadata and executable launcher scripts were
+then restored.
 
-$ sh mvnw -version
-Unable to locate a Java Runtime.
-```
+The untouched project was first run with local Maven, then with the repaired
+wrapper. Both runs compiled all 53 production sources and failed while compiling
+the four test classes with the same 10 errors. Each error is an unresolved
+Lombok-generated `builder()` method on `Grocery`, `Product`, `GroceryDTO`, or
+`ProductDTO`.
 
-The wrapper is also structurally incomplete:
+The annotated classes do declare `@Builder`. The POM configures an explicit
+`annotationProcessorPaths` list but omits Lombok, so Lombok processing is the
+leading cause. This diagnosis must be verified by a minimal POM repair.
 
-- `.mvn/wrapper/maven-wrapper.properties` is missing.
-- `.mvn/wrapper/maven-wrapper.jar` is missing.
-- `mvnw` is not marked executable.
-- During the attempt, the script tried to obtain wrapper components but could
-  not write the absent wrapper path.
-
-No compilation or tests ran. This is an environment/repository bootstrap block,
-not evidence that the application or tests fail.
+Maven also reports a pre-existing model warning: the
+`properties-maven-plugin` declaration has no version.
 
 ## Existing automated tests
 
@@ -66,9 +66,7 @@ No coverage measurement or CI workflow was found.
 
 ## Exit criteria for baseline repair
 
-- A supported Java 17 JDK is selected and recorded.
-- A complete Maven wrapper is committed and executable.
-- `./mvnw -version` succeeds without relying on a global Maven installation.
+- The Java 17 and wrapper prerequisites above remain reproducible.
 - `./mvnw clean verify` completes and its test totals and failures are recorded.
 - Any pre-existing application/test failures are separated from bootstrap
   failures and from regressions introduced by the repair.

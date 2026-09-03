@@ -7,7 +7,7 @@
 | Repository | `ozkanogus/SpringBootSampleERP` |
 | Analyzed revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
 | Build | Maven, single-module JAR |
-| Language target | Java 17 (declared, not locally verified) |
+| Language target | Java 17 (verified with Temurin 17.0.20.1) |
 | Framework | Spring Boot 2.6.3 |
 | Application entry point | `tr.com.erpsample.grocery.GroceryApp` |
 | Runtime database | PostgreSQL |
@@ -65,9 +65,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
 - The POM declares Java 17 and Maven 3.3.9.
 - The configured start class uses `groceryApp`, while the actual class is
   `GroceryApp`; case-sensitive packaging should verify this before migration.
-- The Maven launcher script is committed without executable mode.
-- `.mvn/wrapper/maven-wrapper.properties` and the wrapper JAR are absent, so
-  `./mvnw` is not a reproducible entry point.
+- The Maven wrapper was restored with wrapper 3.3.4, Maven 3.9.16, and an
+  executable Unix launcher during baseline repair.
 - The POM includes both managed and explicit framework components, including
   Hibernate, Jackson modules, MapStruct 1.4.2.Final, Lombok 1.18.22,
   Problem Spring Web 0.27.0, Springdoc 1.6.5, and Testcontainers 1.16.2.
@@ -77,8 +76,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Modernization pressure points
 
-1. **Reproducibility:** restore a complete executable Maven wrapper and document
-   the supported JDK before interpreting build failures.
+1. **Reproducibility:** keep the restored Maven wrapper and verified Java 17
+   toolchain as the canonical build entry point.
 2. **Safety net:** characterize REST contracts, persistence mappings, startup,
    error handling, and purchase/sale stock effects.
 3. **Spring Boot 3 boundary:** 81 production imports use `javax.*`; moving to
@@ -93,15 +92,14 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Recommended next phase
 
-Run a baseline-repair phase only: install/select a supported Java 17 toolchain,
-restore Maven wrapper metadata and executable mode, fix only build-entry issues,
-and execute `clean verify`. Do not upgrade Spring Boot in the same change. After
-the baseline is green, add targeted characterization tests and prepare an
-approved migration plan with small compatibility checkpoints.
+Finish baseline repair by restoring Lombok annotation processing and executing
+`clean verify`. Do not upgrade Spring Boot in the same change. After the baseline
+is green, add targeted characterization tests and prepare an approved migration
+plan with small compatibility checkpoints.
 
 ## Discovery limits
 
-This profile is based on static inspection plus attempted baseline commands.
-Runtime behavior, generated schema, dependency resolution, packaged artifact,
-OpenAPI output, and tests remain unverified because the local machine has no JDK
-and the wrapper is incomplete.
+This profile is based on static inspection plus baseline commands. Production
+compilation and dependency resolution are verified. Runtime behavior, generated
+schema, packaged artifact, OpenAPI output, and test execution remain unverified
+because the existing tests fail during compilation.
