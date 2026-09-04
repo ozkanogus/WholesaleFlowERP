@@ -63,12 +63,12 @@ class GroceryResourceTest {
 	}
 
 	@Test
-	void missingEntityCurrentlyReturnsOkWithEmptyBody() {
+	void missingEntityReturnsNotFoundWithEmptyBody() {
 		when(service.findOne(42L)).thenReturn(Optional.empty());
 
 		ResponseEntity<GroceryDTO> response = resource.getProduct(42L);
 
-		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 		assertNull(response.getBody());
 	}
 

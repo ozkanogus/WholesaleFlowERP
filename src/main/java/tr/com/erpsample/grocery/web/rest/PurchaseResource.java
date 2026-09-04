@@ -102,7 +102,7 @@ public class PurchaseResource {
 	@GetMapping("/purchases/{id}")
 	public ResponseEntity<PurchaseDTO> getPurchase(@PathVariable Long id) {
 		Optional<PurchaseDTO> purchaseDTO = purchaseService.findOne(id);
-		return ResponseEntity.ok(purchaseDTO.orElse(null));
+		return ResponseEntity.of(purchaseDTO);
 	}
 
 	/**

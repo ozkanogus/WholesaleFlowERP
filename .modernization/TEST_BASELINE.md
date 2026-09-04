@@ -11,7 +11,7 @@
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Build success; 24 tests pass |
+| Current result | Build success; 29 tests pass |
 
 ## Commands and observed result
 
@@ -47,7 +47,7 @@ Maven also reports a pre-existing model warning: the
 
 The original four classes contained nine tests. The first characterization slice
 added eight tests in two classes. MVC, persistence, and context tests bring the
-current total to twenty-four:
+total to twenty-four. Five lookup regression tests bring the current total to twenty-nine:
 
 | Area | Tests | Style |
 | --- | ---: | --- |
@@ -60,6 +60,7 @@ current total to twenty-four:
 | Grocery HTTP contracts | 4 | Standalone MockMvc with application Jackson modules |
 | Persistence mappings | 2 | DataJpaTest with isolated H2 and rollback |
 | Application context | 1 | SpringBootTest with isolated H2 and mocked DataPopulator |
+| Resource lookups | 5 | MockMvc checks existing and missing records across all resources |
 
 All tests use JUnit Jupiter annotations and Mockito's Jupiter extension. The
 original tests import JUnit 4 assertions; the new tests use Jupiter assertions.
@@ -67,8 +68,11 @@ original tests import JUnit 4 assertions; the new tests use Jupiter assertions.
 The new tests cover positive purchase quantities, negative sale quantities,
 replacement-call ordering, the current no-op for INVENTORY, and grocery resource
 responses. They document current behavior, not approval of every business rule.
-In particular, missing groceries currently return HTTP 200 with a null body,
-despite the controller documentation promising 404. Correct this separately.
+Missing records originally returned HTTP 200 with a null body in all five
+resources, despite controller documentation promising 404. Five regression
+tests reproduced the failure before a separate behavior fix. All five lookup
+endpoints now return 404 with an empty body for missing records and retain 200
+with the DTO for existing records. No dependency upgrade was included.
 
 ## Coverage gaps
 
@@ -92,6 +96,7 @@ No coverage measurement or CI workflow was found.
 
 - Java 17 and Maven wrapper prerequisites are reproducible.
 - `./mvnw -version` reports Maven 3.9.16 and Temurin 17.0.20.1.
-- `./mvnw clean verify` succeeds with 24 passing tests after persistence/context coverage.
+- `./mvnw clean verify` succeeds with 29 passing tests after lookup regression coverage.
 - The original bootstrap and test-compilation failures are recorded separately.
-- No framework version or application behavior was changed.
+- Baseline repair changed no framework version or application behavior; the later
+  missing-record response correction is documented separately above.

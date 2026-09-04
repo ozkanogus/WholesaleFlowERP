@@ -102,7 +102,7 @@ public class ProductResource {
 	@GetMapping("/products/{id}")
 	public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
 		Optional<ProductDTO> productDTO = productService.findOne(id);
-		return ResponseEntity.ok(productDTO.orElse(null));
+		return ResponseEntity.of(productDTO);
 	}
 
 	/**
