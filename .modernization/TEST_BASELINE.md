@@ -2,9 +2,10 @@
 
 ## Baseline context
 
-Latest: Stage 4a on Boot 3.5.16 passes 51 full-profile and 35 default tests.
-Five new full-context error contracts and MockitoBean adaptation are recorded
-in `BOOT4_TEST_PREPARATION_RESULT.md`. Prior packaged checks: `BOOT35_RESULT.md`.
+Latest: Stage 4b on Boot 3.5.16 passes 52 full-profile and 36 default tests.
+WebServerTest starts a loopback random-port server, asserts Tomcat factory and
+server types, and checks a real HTTP 404 response. See `TOMCAT_RESULT.md`.
+Stage 4a error contracts remain in `BOOT4_TEST_PREPARATION_RESULT.md`.
 
 Stage 3a repeat on Boot 3.1.12: all 46 opt-in tests and 30 default tests pass.
 Jakarta imports, the Hibernate module factory reference and test logging syntax
@@ -20,7 +21,7 @@ and packaged PostgreSQL smoke evidence.
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Default: 35 pass; PostgreSQL profile: 51 pass (34 Surefire + 17 Failsafe) |
+| Current result | Default: 36 pass; PostgreSQL profile: 52 pass (35 Surefire + 17 Failsafe) |
 
 ## Commands and observed result
 
@@ -57,7 +58,8 @@ Maven also reports a pre-existing model warning: the
 The original four classes contained nine tests. The first characterization slice
 added eight tests in two classes. MVC, persistence, and context tests bring the
 total to twenty-four. Five lookup regressions and one packaging regression brought
-the default total to thirty. Stage 4a adds five full-context error cases (35):
+the default total to thirty. Stage 4a added five error cases; Stage 4b adds
+one real-server case (36 default):
 
 | Area | Tests | Style |
 | --- | ---: | --- |
@@ -70,6 +72,7 @@ the default total to thirty. Stage 4a adds five full-context error cases (35):
 | Grocery HTTP contracts | 4 | Standalone MockMvc with application Jackson modules |
 | Persistence mappings | 2 | DataJpaTest with isolated H2 and rollback |
 | Application context and error contracts | 6 | SpringBootTest/MockMvc with isolated H2 and MockitoBean DataPopulator |
+| Embedded server | 1 | Real loopback Tomcat with isolated H2, factory/type and HTTP assertions |
 | Resource lookups | 5 | MockMvc checks existing and missing records across all resources |
 | Packaged entry point | 1 | Failsafe checks manifest and class entries after packaging |
 

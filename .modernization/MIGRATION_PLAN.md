@@ -43,7 +43,7 @@ Sources accessed 2026-09-04:
 | Serialization | Hibernate 5 Jackson module and JAXB module need review | Confirmed current dependencies; target combination Unknown |
 | OpenAPI | Existing Springdoc 1.6.5 cannot simply be carried across all targets | Target coordinates/versions must be selected from its compatibility matrix |
 | Errors | Zalando ProblemHandling and Jackson modules couple error contracts to libraries | Boot 4 compatibility Unknown; retain contract tests before deciding replacement |
-| Embedded server | Undertow is declared; Boot 4 drops its support | Confirmed; resolve actual current server and approve target server before Stage 4 |
+| Embedded server | Stage 4b removed redundant Undertow; Tomcat is verified | Confirmed; see `TOMCAT_RESULT.md` |
 | Security/messaging | No security layer or messaging found | Confirmed discovery; new features out of migration scope |
 | Tests | 30 green tests; PostgreSQL reporting only smoke-tested | Confirmed; deterministic SQL and transaction coverage remains a gate |
 | Delivery | No deployed system, CI or container runtime | Confirmed; deployment and infrastructure redesign deferred |
@@ -147,8 +147,8 @@ reports remain historical evidence. Boot 4 execution remains unapproved.
 
 Preparation review: see `BOOT4_PREPARATION.md` for repository evidence and
 separately gated steps 4a–4d. Stage 4a is GREEN; see
-`BOOT4_TEST_PREPARATION_RESULT.md`. Next is server clarification (4b), pending
-approval. Framework execution remains unapproved.
+`BOOT4_TEST_PREPARATION_RESULT.md`. Stage 4b is GREEN in `TOMCAT_RESULT.md`.
+Next is error-adapter preparation (4c), pending approval. Framework execution remains unapproved.
 
 - Status: PROPOSED; approval owner/date: owner / pending.
 - Purpose/rationale: reach an appropriately maintained framework line after the

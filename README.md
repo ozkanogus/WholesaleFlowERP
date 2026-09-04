@@ -48,7 +48,7 @@ selection follows the PostgreSQL session timezone. See
 - Java 17 is declared in Maven (a local JDK is required).
 - Spring Boot 3.5.16 (verified migration checkpoint; not the final deployment target)
 - Maven
-- Spring MVC and Undertow
+- Spring MVC and embedded Tomcat
 - Spring Data JPA and Hibernate
 - PostgreSQL for local runtime; H2 is configured for tests
 - MapStruct and Lombok
