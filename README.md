@@ -41,7 +41,7 @@ It also exposes `GET /api/sales/topSold/{groceryId}`.
 ## Technology baseline
 
 - Java 17 is declared in Maven (a local JDK is required).
-- Spring Boot 2.6.3
+- Spring Boot 2.7.18 (verified migration bridge; not the final deployment target)
 - Maven
 - Spring MVC and Undertow
 - Spring Data JPA and Hibernate

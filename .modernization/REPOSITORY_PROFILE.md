@@ -8,7 +8,7 @@
 | Analyzed revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
 | Build | Maven, single-module JAR |
 | Language target | Java 17 (verified with Temurin 17.0.20.1) |
-| Framework | Spring Boot 2.6.3 |
+| Framework | Spring Boot 2.7.18 (Stage 1 verified) |
 | Application entry point | `tr.com.erpsample.grocery.GroceryApp` |
 | Runtime database | PostgreSQL |
 | Test database | H2 |
@@ -80,7 +80,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Build and dependency observations
 
-- The Spring Boot parent and explicit Spring Boot property are both `2.6.3`.
+- The Spring Boot parent and explicit Spring Boot property are both `2.7.18`,
+  upgraded together from `2.6.3` in Stage 1; Java 17 is unchanged.
 - The POM declares Java 17 and Maven 3.3.9.
 - The original configured start class used `groceryApp` instead of `GroceryApp`.
   This was corrected after a post-packaging regression test reproduced the
@@ -114,9 +115,9 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Recommended next phase
 
-Add targeted characterization tests around behavior-sensitive seams, then
-prepare an approved migration plan with small compatibility checkpoints. Do not
-combine safety-net work with the Spring Boot upgrade.
+Stage 1 is green. Seek approval for Stage 2 of `MIGRATION_PLAN.md`: deterministic
+PostgreSQL and contract coverage before crossing the Jakarta boundary. Do not
+combine safety-net work with another framework upgrade.
 
 ## Discovery limits
 
