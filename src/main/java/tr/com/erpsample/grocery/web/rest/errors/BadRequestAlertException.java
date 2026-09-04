@@ -1,11 +1,7 @@
 package tr.com.erpsample.grocery.web.rest.errors;
 
-import org.zalando.problem.AbstractThrowableProblem;
-import org.zalando.problem.Status;
-
-public class BadRequestAlertException extends AbstractThrowableProblem {
-
+public class BadRequestAlertException extends RuntimeException {
     public BadRequestAlertException(String defaultMessage) {
-        super(null, defaultMessage, Status.BAD_REQUEST);
+        super(defaultMessage);
     }
 }

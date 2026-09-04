@@ -12,8 +12,8 @@ foundation that may be corrected and completed.
 
 > This repository is being used as a pilot for the
 > [Agentic Java Modernization](https://github.com/ozkanogus/agentic-java-modernization)
-> methodology. The current phase documents the existing system; it does not yet
-> change application behavior or dependencies.
+> methodology. The verified checkpoint is Spring Boot 3.5.16 with native MVC
+> error handling. Further framework upgrades require separate verification.
 
 ## System at a glance
 
@@ -37,6 +37,10 @@ The API is rooted at `/api` and provides CRUD operations for:
 - `/stockMovements`
 
 It also exposes `GET /api/sales/topSold/{groceryId}`.
+
+Error bodies use application/problem+json with application-owned compatibility
+fields. Validation errors include field/message violations; unexpected 500 errors
+omit internal diagnostic details. Missing entities return empty 404 responses.
 
 This report ranks current-calendar-month quantities for one grocery, returning
 at most three products, with product ID ascending as the tie-breaker. Month
@@ -70,7 +74,8 @@ local credentials should be supplied outside version control.
 
 ## Tests
 
-Eleven test classes contain thirty unit, MVC, persistence, context, and packaging tests:
+The default build runs 39 tests across 13 unit, MVC, persistence, context,
+server and packaging test classes:
 
 - `GroceryServiceTest`
 - `ProductServiceTest`
@@ -81,11 +86,14 @@ Eleven test classes contain thirty unit, MVC, persistence, context, and packagin
 - `GroceryHttpTest`
 - `PersistenceMappingTest`
 - `GroceryContextTest`
+- `WebServerTest`
+- `ErrorAdviceContractTest`
 - `ResourceLookupHttpTest`
 - `PackagedApplicationIT` (runs after packaging during `verify`)
 
-The verified wrapper baseline compiles the application, runs all thirty
-tests, and packages the executable JAR. See `.modernization/TEST_BASELINE.md`
+The verified wrapper baseline compiles the application, runs all 39 default
+tests, and packages the executable JAR. The PostgreSQL profile adds 16 tests
+(55 total across 15 classes). See `.modernization/TEST_BASELINE.md`
 for the exact result and current test gaps.
 
 ## Modernization status

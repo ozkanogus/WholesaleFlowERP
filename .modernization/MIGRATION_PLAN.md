@@ -2,7 +2,8 @@
 
 Prepared: 2026-09-04. Owner/approver: repository owner.
 Planning does not authorize execution. Stage 1 was approved and verified on
-2026-09-04. Stage 2 is also verified; Stages 3 and 4 remain PROPOSED.
+2026-09-04. Stages 2, 3a–3e and 4a–4c are verified; Stage 4d remains PROPOSED.
+Historical baseline details below describe the original planning checkpoint.
 
 ## Current state and target
 
@@ -148,10 +149,11 @@ reports remain historical evidence. Boot 4 execution remains unapproved.
 Preparation review: see `BOOT4_PREPARATION.md` for repository evidence and
 separately gated steps 4a–4d. Stage 4a is GREEN; see
 `BOOT4_TEST_PREPARATION_RESULT.md`. Stage 4b is GREEN in `TOMCAT_RESULT.md`.
-Next is error-adapter preparation (4c), pending approval. Framework execution remains unapproved.
+Stage 4c is GREEN in ERROR_HANDLER_RESULT.md. Framework execution remains unapproved.
 
 Exact Stage 4c proposal: `ERROR_HANDLER_PLAN.md`; includes broader advice
-characterization before removal and a compatibility wire model. Execution pending.
+characterization before removal and a compatibility wire model. Execution verified;
+unexpected-500 redaction was separately approved. Next: exact Stage 4d proposal.
 
 - Status: PROPOSED; approval owner/date: owner / pending.
 - Purpose/rationale: reach an appropriately maintained framework line after the
