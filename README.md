@@ -12,7 +12,7 @@ foundation that may be corrected and completed.
 
 > This repository is being used as a pilot for the
 > [Agentic Java Modernization](https://github.com/ozkanogus/agentic-java-modernization)
-> methodology. The verified checkpoint is Spring Boot 3.5.16 with native MVC
+> methodology. The verified checkpoint is Spring Boot 4.0.8 with native MVC
 > error handling. Further framework upgrades require separate verification.
 
 ## System at a glance
@@ -50,7 +50,7 @@ selection follows the PostgreSQL session timezone. See
 ## Technology baseline
 
 - Java 17 is declared in Maven (a local JDK is required).
-- Spring Boot 3.5.16 (verified migration checkpoint; not the final deployment target)
+- Spring Boot 4.0.8 (verified migration checkpoint; deployment hardening remains)
 - Maven
 - Spring MVC and embedded Tomcat
 - Spring Data JPA and Hibernate
@@ -74,7 +74,7 @@ local credentials should be supplied outside version control.
 
 ## Tests
 
-The default build runs 39 tests across 13 unit, MVC, persistence, context,
+The default build runs 40 tests across 13 unit, MVC, persistence, context,
 server and packaging test classes:
 
 - `GroceryServiceTest`
@@ -91,16 +91,17 @@ server and packaging test classes:
 - `ResourceLookupHttpTest`
 - `PackagedApplicationIT` (runs after packaging during `verify`)
 
-The verified wrapper baseline compiles the application, runs all 39 default
+The verified wrapper baseline compiles the application, runs all 40 default
 tests, and packages the executable JAR. The PostgreSQL profile adds 16 tests
-(55 total across 15 classes). See `.modernization/TEST_BASELINE.md`
+(56 total across 15 classes). See `.modernization/TEST_BASELINE.md`
 for the exact result and current test gaps.
 
 ## Modernization status
 
 Discovery findings are recorded in
 `.modernization/REPOSITORY_PROFILE.md`. The build baseline is reproducible;
-characterization and migration planning come next. Because the application never
+the Boot 4.0 checkpoint is verified in `.modernization/BOOT40_RESULT.md`.
+Deployment hardening and broader domain coverage remain. Because the application never
 entered production, verified defects and incomplete behavior may be corrected,
 but each change should document its intended business rule and remain reviewable.
 

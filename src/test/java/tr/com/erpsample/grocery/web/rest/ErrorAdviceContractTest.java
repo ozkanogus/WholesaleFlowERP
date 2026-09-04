@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.converter.json.JacksonJsonHttpMessageConverter;
+import tools.jackson.databind.json.JsonMapper;
 import tr.com.erpsample.grocery.web.rest.errors.ExceptionTranslator;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -13,9 +13,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ErrorAdviceContractTest {
     @Test
     void preserveInheritedExceptionStatuses() throws Exception {
-        var mapper = new ObjectMapper();
+        var mapper = JsonMapper.builder().build();
         var http = MockMvcBuilders.standaloneSetup(new FailingController())
-            .setMessageConverters(new MappingJackson2HttpMessageConverter(mapper))
+            .setMessageConverters(new JacksonJsonHttpMessageConverter(mapper))
             .setControllerAdvice(new ExceptionTranslator()).build();
         for (String accept : new String[] {"application/json", "application/problem+json"}) {
             for (int code : new int[] {400, 501, 504}) {
@@ -33,9 +33,9 @@ class ErrorAdviceContractTest {
 
     @Test
     void preserveRoutingErrors() throws Exception {
-        var mapper = new ObjectMapper();
+        var mapper = JsonMapper.builder().build();
         var http = MockMvcBuilders.standaloneSetup(new FailingController())
-            .setMessageConverters(new MappingJackson2HttpMessageConverter(mapper))
+            .setMessageConverters(new JacksonJsonHttpMessageConverter(mapper))
             .setControllerAdvice(new ExceptionTranslator()).build();
         for (String accept : new String[] {"application/json", "application/problem+json"}) {
             var requests = java.util.List.of(
@@ -66,9 +66,9 @@ class ErrorAdviceContractTest {
     }
     @Test
     void redactUnexpectedException() throws Exception {
-        var mapper = new ObjectMapper();
+        var mapper = JsonMapper.builder().build();
         var http = MockMvcBuilders.standaloneSetup(new FailingController())
-            .setMessageConverters(new MappingJackson2HttpMessageConverter(mapper))
+            .setMessageConverters(new JacksonJsonHttpMessageConverter(mapper))
             .setControllerAdvice(new ExceptionTranslator()).build();
         for (String accept : new String[] {"application/json", "application/problem+json"}) {
             var response = http.perform(get("/test-only/failure").accept(accept))

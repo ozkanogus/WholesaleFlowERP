@@ -2,7 +2,7 @@
 
 Prepared: 2026-09-04. Owner/approver: repository owner.
 Planning does not authorize execution. Stage 1 was approved and verified on
-2026-09-04. Stages 2, 3a–3e and 4a–4c are verified; Stage 4d remains PROPOSED.
+2026-09-04. Stages 2, 3a–3e and 4a–4d are verified; see BOOT40_RESULT.md.
 Historical baseline details below describe the original planning checkpoint.
 
 ## Current state and target
@@ -145,6 +145,10 @@ reports remain historical evidence. Boot 4 execution remains unapproved.
 - Rollback: revert only the failing substage, restore prior artifact/test database.
 
 ### Stage 4 — Boot 4 candidate, conditional
+
+Final update: Stage 4d is approved and GREEN on Boot 4.0.8 / Springdoc 3.0.3,
+Java 17. 56 full-profile / 40 default tests and runtime/schema/OpenAPI checks pass.
+See BOOT40_RESULT.md. The original proposed scope below remains historical.
 
 Preparation review: see `BOOT4_PREPARATION.md` for repository evidence and
 separately gated steps 4a–4d. Stage 4a is GREEN; see

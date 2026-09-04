@@ -1,6 +1,7 @@
 # Stage 4d — Boot 4 transition proposal
 
-Prepared 2026-09-04 against main 749677c. PROPOSED, not approved or executed.
+Prepared 2026-09-04 against main 749677c. Subsequently approved and verified;
+see BOOT40_RESULT.md. The original scope and entry evidence follow.
 Current evidence: 55 PostgreSQL-profile / 39 default tests pass on Boot 3.5.16.
 No new test result is claimed by this documentation change.
 
