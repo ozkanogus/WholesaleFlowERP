@@ -65,14 +65,16 @@ local credentials should be supplied outside version control.
 
 ## Tests
 
-Four service test classes contain nine Mockito-based unit tests:
+Six test classes contain seventeen Mockito-based unit and characterization tests:
 
 - `GroceryServiceTest`
 - `ProductServiceTest`
 - `PurchaseServiceTest`
 - `SaleServiceTest`
+- `StockMovementServiceTest`
+- `GroceryResourceTest`
 
-The verified wrapper baseline compiles the application, runs all nine existing
+The verified wrapper baseline compiles the application, runs all seventeen
 tests, and packages the executable JAR. See `.modernization/TEST_BASELINE.md`
 for the exact result and current test gaps.
 
