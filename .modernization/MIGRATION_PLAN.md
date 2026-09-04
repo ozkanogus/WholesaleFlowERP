@@ -150,6 +150,9 @@ separately gated steps 4a–4d. Stage 4a is GREEN; see
 `BOOT4_TEST_PREPARATION_RESULT.md`. Stage 4b is GREEN in `TOMCAT_RESULT.md`.
 Next is error-adapter preparation (4c), pending approval. Framework execution remains unapproved.
 
+Exact Stage 4c proposal: `ERROR_HANDLER_PLAN.md`; includes broader advice
+characterization before removal and a compatibility wire model. Execution pending.
+
 - Status: PROPOSED; approval owner/date: owner / pending.
 - Purpose/rationale: reach an appropriately maintained framework line after the
   prerequisite 3.5 checkpoint, rather than stopping indefinitely on a bridge.

@@ -4,6 +4,9 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Stage 4c implementation proposal is recorded in `ERROR_HANDLER_PLAN.md`.
+Documentation only; the current native-handler replacement is not yet approved.
+
 Stage 4b is GREEN: Tomcat was already active; redundant Undertow was removed.
 52 full-profile / 36 default cases and packaged PostgreSQL smoke pass.
 See `TOMCAT_RESULT.md`. Error-adapter replacement remains unapproved.
