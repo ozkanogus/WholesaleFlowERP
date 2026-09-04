@@ -22,6 +22,7 @@ import tr.com.erpsample.grocery.service.PurchaseService;
 import tr.com.erpsample.grocery.web.rest.GroceryResource;
 
 @SpringBootTest(properties = {
+    "grocery.demo-data.enabled=true",
     "spring.datasource.url=jdbc:h2:mem:context-test;DB_CLOSE_DELAY=-1",
     "spring.jpa.hibernate.ddl-auto=create-drop"
 })

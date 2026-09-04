@@ -13,7 +13,7 @@
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 54 |
-| Test classes / invocations | 15 / 56 (40 default plus 16 opt-in PostgreSQL cases) |
+| Test classes / invocations | 16 / 60 (44 default plus 16 opt-in PostgreSQL cases) |
 | CI | None found |
 | Containers | None found |
 
@@ -73,9 +73,10 @@ job integration was found. Actuator and Springdoc dependencies are present.
 - `spring.jpa.hibernate.ddl-auto=update` is present for the runtime profile.
 - Unused Liquibase properties registration was removed in Stage 4d; no changelog,
   migration engine or schema migration was introduced.
-- A local database password is committed in the default properties. Treat it only as
-  a disposable local default and replace it with external configuration during
-  hardening.
+- Runtime URL, username and password are externalized; no bundled connection
+  defaults remain. Historical committed credentials still require rotation if reused.
+- Demo initialization is opt-in via GROCERY_DEMO_DATA_ENABLED=true; default startup
+  does not seed data. See CONFIGURATION_HARDENING_RESULT.md.
 - Open Session in View is disabled.
 
 ## Build and dependency observations

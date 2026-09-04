@@ -30,6 +30,7 @@ import tr.com.erpsample.grocery.service.SaleService;
 import tr.com.erpsample.grocery.service.dto.*;
 
 @SpringBootTest(properties = {
+    "grocery.demo-data.enabled=true",
     "spring.jpa.hibernate.ddl-auto=validate",
     "spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect"
 })

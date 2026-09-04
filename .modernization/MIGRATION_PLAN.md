@@ -1,5 +1,10 @@
 # Proposed migration plan
 
+Post-stack hardening: configuration externalization and opt-in demo initialization
+are verified; see CONFIGURATION_HARDENING_RESULT.md. Next: assess a versioned
+schema baseline, then CI, broader tests and security/deployment decisions in
+separate stages. No authentication policy or deployment target is assumed.
+
 Prepared: 2026-09-04. Owner/approver: repository owner.
 Planning does not authorize execution. Stage 1 was approved and verified on
 2026-09-04. Stages 2, 3a–3e and 4a–4d are verified; see BOOT40_RESULT.md.

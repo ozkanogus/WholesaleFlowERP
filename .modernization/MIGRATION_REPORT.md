@@ -4,6 +4,11 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Configuration hardening is GREEN: external runtime connection settings and opt-in
+demo initialization, with 44 default / 60 PostgreSQL-profile tests passing.
+Packaged empty-default and enabled-demo startup checks pass. See
+CONFIGURATION_HARDENING_RESULT.md. Schema migrations and CI remain separate work.
+
 Java 21 stage is GREEN: Temurin 21.0.12.1, compiler release 21, Modernizer 2.7.0.
 40 default and 56 PostgreSQL-profile tests pass; packaged runtime, OpenAPI and
 schema comparison pass. One guarded Optional call was modernized without changing

@@ -2,13 +2,30 @@ package tr.com.erpsample.grocery;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
+import java.util.Properties;
 import org.junit.jupiter.api.Test;
 
 /** Runs in Maven verify after Spring Boot has repackaged the artifact. */
 class PackagedApplicationIT {
+    @Test
+    void packagedRuntimeHasNoBundledDatabaseConnectionOrDemoOptIn() throws Exception {
+        try (JarFile jar = new JarFile(System.getProperty("packagedApplicationJar"))) {
+            Properties properties = new Properties();
+            try (var input = jar.getInputStream(jar.getJarEntry(
+                    "BOOT-INF/classes/config/application.properties"))) {
+                properties.load(input);
+            }
+            for (String key : new String[] {"spring.datasource.url", "spring.datasource.username",
+                    "spring.datasource.password", "grocery.demo-data.enabled"}) {
+                assertFalse(properties.containsKey(key), key + " must be supplied externally");
+            }
+        }
+    }
+
     @Test
     void executableJarPointsToItsPackagedApplicationClass() throws Exception {
         try (JarFile jar = new JarFile(System.getProperty("packagedApplicationJar"))) {

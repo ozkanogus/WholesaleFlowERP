@@ -35,6 +35,11 @@ not an immutable production contract.
 
 ## Verification expectations
 
+Runtime database connection settings must come from external configuration.
+Keep demo initialization disabled except in explicitly disposable databases.
+Tests that replace DataPopulator with an enforced mock explicitly enable the
+conditional bean; do not weaken those replacement assertions.
+
 Use a Java 21 JDK through explicit `JAVA_HOME` and the committed Maven wrapper.
 Keep IDE builds from modifying Maven's `target` directory during verification.
 The minimum repository check is:
