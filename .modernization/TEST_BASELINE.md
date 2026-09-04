@@ -11,7 +11,7 @@
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Default: 30 pass; PostgreSQL profile: 40 pass (29 Surefire + 11 Failsafe) |
+| Current result | Default: 30 pass; PostgreSQL profile: 46 pass (29 Surefire + 17 Failsafe) |
 
 ## Commands and observed result
 
@@ -83,6 +83,12 @@ the JAR. This is an artifact check, not a process-startup or database test.
 
 ## Coverage gaps
 
+Stage 2 final slice adds six invocations: two service-owned foreign-key failure
+rollback cases and four full-context purchase/sale MockMvc cases. All 46 tests
+pass without skips. DTO IDs, quantity, price, timestamp and selected 400/404
+contracts are protected. PostgreSQL SQLSTATE 23503 is asserted before checking
+absence of partial aggregate/line/stock writes. See `POSTGRES_TESTS.md` for limits.
+
 The next Stage 2 slice adds six real-service PostgreSQL workflow invocations
 (three parameterized methods, purchase and sale each). The 40-test full build
 passes without skips. It covers persisted line prices/quantities, signed stock,
@@ -104,14 +110,14 @@ They do not replace the automated coverage gaps below.
 
 No automated coverage was found for:
 
-- HTTP contracts outside the grocery create/get and validation/error cases
-  covered by standalone MockMvc; full Spring Boot web configuration is untested
+- HTTP contracts outside existing grocery cases and full-context purchase/sale
+  GET, malformed JSON and ID-error cases (successful HTTP writes remain a gap)
 - multi-line purchase/sale aggregates and same-product quantity edits
 - default runtime configuration and demo-data startup (the context smoke test
   uses H2 create-drop and replaces the random DataPopulator with a mock)
 - Testcontainers execution
 - stock movement update/delete edge cases
-- service-owned transaction rollback on invalid-input or persistence failure
+- rollback on failures other than the covered foreign-key/forced-failure cases
 - schema creation or migration
 - security expectations
 - packaged application startup
