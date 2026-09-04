@@ -12,8 +12,8 @@
 | Application entry point | `tr.com.erpsample.grocery.GroceryApp` |
 | Runtime database | PostgreSQL |
 | Test database | H2 |
-| Production Java files | 53 |
-| Test classes / invocations | 14 / 52 (36 default plus 16 opt-in PostgreSQL cases) |
+| Production Java files | 54 |
+| Test classes / invocations | 15 / 55 (39 default plus 16 opt-in PostgreSQL cases) |
 | CI | None found |
 | Containers | None found |
 
@@ -79,6 +79,10 @@ job integration was found. Actuator and Springdoc dependencies are present.
 - Open Session in View is disabled.
 
 ## Build and dependency observations
+
+- Stage 4c replaces Zalando with native MVC advice and an application-owned
+  compatible JSON error model. Approved unexpected-500 redaction is verified.
+  See ERROR_HANDLER_RESULT.md for test, runtime and OpenAPI comparison evidence.
 
 - Stage 4b verified Tomcat as the active server before and after removing the
   redundant Undertow starter. See `TOMCAT_RESULT.md` for runtime and JAR evidence.

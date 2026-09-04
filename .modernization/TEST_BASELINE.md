@@ -2,7 +2,10 @@
 
 ## Baseline context
 
-Latest: Stage 4b on Boot 3.5.16 passes 52 full-profile and 36 default tests.
+Latest: Stage 4c on Boot 3.5.16 passes 55 full-profile and 39 default tests.
+Three advice test methods cover routing, inherited status mappings and approved
+unexpected-500 redaction with both JSON Accept variants. See ERROR_HANDLER_RESULT.md.
+Stage 4b previously passed 52 full-profile and 36 default tests.
 WebServerTest starts a loopback random-port server, asserts Tomcat factory and
 server types, and checks a real HTTP 404 response. See `TOMCAT_RESULT.md`.
 Stage 4a error contracts remain in `BOOT4_TEST_PREPARATION_RESULT.md`.
@@ -21,7 +24,7 @@ and packaged PostgreSQL smoke evidence.
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Default: 36 pass; PostgreSQL profile: 52 pass (35 Surefire + 17 Failsafe) |
+| Current result | Default: 39 pass; PostgreSQL profile: 55 pass (38 Surefire + 17 Failsafe) |
 
 ## Commands and observed result
 
@@ -70,6 +73,7 @@ one real-server case (36 default):
 | Stock movement service | 3 | Mockito characterization tests |
 | Grocery resource | 5 | Direct controller-method characterization tests |
 | Grocery HTTP contracts | 4 | Standalone MockMvc with application Jackson modules |
+| Error advice contracts | 3 | Standalone MockMvc, routing/status compatibility and 500 redaction |
 | Persistence mappings | 2 | DataJpaTest with isolated H2 and rollback |
 | Application context and error contracts | 6 | SpringBootTest/MockMvc with isolated H2 and MockitoBean DataPopulator |
 | Embedded server | 1 | Real loopback Tomcat with isolated H2, factory/type and HTTP assertions |

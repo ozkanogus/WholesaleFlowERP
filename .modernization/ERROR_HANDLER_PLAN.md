@@ -1,8 +1,9 @@
 # Stage 4c — Spring-native error handling proposal
 
-Prepared 2026-09-04. Execution pending owner approval. Baseline: Boot 3.5.16,
+Prepared 2026-09-04. Execution approved; unexpected-500 redaction also approved.
+Implementation verified: ERROR_HANDLER_RESULT.md. Baseline: Boot 3.5.16,
 Java 17, Tomcat; 52 full-profile and 36 default cases pass. This document-only
-change does not replace dependencies, alter responses or claim new test results.
+proposal originally did not replace dependencies or claim new test results.
 
 ## Decision
 

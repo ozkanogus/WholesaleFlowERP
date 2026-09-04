@@ -4,12 +4,15 @@ Updated: 2026-09-04.
 
 ## Outcome
 
-Stage 4c implementation proposal is recorded in `ERROR_HANDLER_PLAN.md`.
-Documentation only; the current native-handler replacement is not yet approved.
+Stage 4c is GREEN: native MVC error handling replaces Zalando, preserving tested
+contracts with explicitly approved unexpected-500 redaction. 55 full-profile /
+39 default tests, fresh packaged PostgreSQL smoke and exact OpenAPI path/schema
+comparison pass. See ERROR_HANDLER_RESULT.md. No Boot 4 execution or push.
+Earlier stage summaries below are historical.
 
 Stage 4b is GREEN: Tomcat was already active; redundant Undertow was removed.
 52 full-profile / 36 default cases and packaged PostgreSQL smoke pass.
-See `TOMCAT_RESULT.md`. Error-adapter replacement remains unapproved.
+See `TOMCAT_RESULT.md` for the prior stage.
 
 Boot 4 preparation Stage 4a is GREEN: MockitoBean replacement and five new
 full-context error contracts; 51 full-profile / 35 default cases pass. No
