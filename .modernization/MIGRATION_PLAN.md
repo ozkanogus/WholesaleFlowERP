@@ -116,12 +116,12 @@ edits and repository-specific corrections can be reviewed directly.
 
 ### Stage 3 — Jakarta and Boot 3 compatibility checkpoint
 
-Stage 3c (Boot 3.3.13 / Springdoc 2.6.0) approved and GREEN on 2026-09-04.
-See `BOOT33_RESULT.md` for scope, evidence and rollback. Stage 3b evidence remains
-in `BOOT32_RESULT.md`. Later stages unapproved.
+Stage 3d (Boot 3.4.13 / Springdoc 2.7.0) approved and GREEN on 2026-09-04.
+See `BOOT34_RESULT.md` for scope, evidence and rollback. Earlier checkpoint
+evidence remains in `BOOT32_RESULT.md` and `BOOT33_RESULT.md`. Later stages unapproved.
 
-- Status: PARTIAL; Stage 3a (Boot 3.1.12) approved and GREEN on 2026-09-04.
-  See `STAGE3_RESULT.md`. Later minor checkpoints remain PROPOSED/unapproved.
+- Status: PARTIAL; Stages 3a–3d (Boot 3.1–3.4) are GREEN on 2026-09-04.
+  See the linked checkpoint reports. Boot 3.5 remains PROPOSED/unapproved.
 - Stage 3a proposal: Boot 3.1.12 / Java 17, with exact candidate dependency
   changes and residual test risks in `STAGE3_COMPATIBILITY.md`. This first
   checkpoint is proposed to avoid a temporary Jackson override on Boot 3.0.
