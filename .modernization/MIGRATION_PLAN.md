@@ -155,6 +155,10 @@ Exact Stage 4c proposal: `ERROR_HANDLER_PLAN.md`; includes broader advice
 characterization before removal and a compatibility wire model. Execution verified;
 unexpected-500 redaction was separately approved. Next: exact Stage 4d proposal.
 
+Stage 4d candidate scope is now in BOOT4_TRANSITION_PLAN.md: Boot 4.0.8 /
+Springdoc 3.0.3, Java 17 unchanged. It is a proposal, not execution approval;
+the documented entry checks and API/documentation review still apply.
+
 - Status: PROPOSED; approval owner/date: owner / pending.
 - Purpose/rationale: reach an appropriately maintained framework line after the
   prerequisite 3.5 checkpoint, rather than stopping indefinitely on a bridge.
