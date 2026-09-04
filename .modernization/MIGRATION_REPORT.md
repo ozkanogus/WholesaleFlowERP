@@ -4,6 +4,12 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Workflow-slice update (2026-09-04): 40 tests pass in the PostgreSQL profile
+(29 Surefire + 11 Failsafe), including six new service workflow cases. The
+preceding 34-test baseline was rerun successfully. Only tests and documentation
+changed. See `POSTGRES_TESTS.md` for cascade/replacement/rollback evidence and
+limits; Stage 2 remains IN PROGRESS. No new framework stage or remote push.
+
 Stage 2 update: approved and IN PROGRESS. Reporting slice adds four PostgreSQL
 tests (34 total in the opt-in full build, zero failures/errors/skips). The owner
 approved product-ID ascending as the tie-break for equal current-month quantity

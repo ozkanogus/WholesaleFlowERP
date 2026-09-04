@@ -1,6 +1,6 @@
 # PostgreSQL integration tests
 
-Stage 2 reporting slice, approved 2026-09-04. Framework remains Boot 2.7.18.
+Stage 2 reporting and workflow slices, approved 2026-09-04. Framework remains Boot 2.7.18.
 
 ## Isolated setup
 
@@ -26,7 +26,8 @@ export GROCERY_TEST_DB_USER=ozkanogus
 
 Keep `dev` explicitly enabled to preserve the baseline dependency profile.
 The regular `./mvnw clean verify` excludes PostgreSQL tests intentionally and
-still runs the original 30 tests. The opt-in command adds four report tests;
+still runs the original 30 tests. The opt-in command adds four report tests and
+six workflow invocations (40 total);
 missing settings, an unavailable server, or an incompatible schema fail the run.
 
 ## Protected behavior
@@ -44,8 +45,24 @@ semantics remain unchanged; no business timezone policy has been introduced.
 Each DataJpaTest transaction rolls back its inserted rows. Sequence advances
 remain, as expected in PostgreSQL. The slice does not start the demo initializer.
 
-Direct SQL fixtures exercise the real repository query, not service persistence,
-cascades, DTO mapping or HTTP serialization. Those are subsequent Stage 2 work.
+Direct SQL report fixtures exercise the real repository query. The separate
+`PostgresWorkflowIT` starts the Spring context with only DataPopulator mocked;
+services, repositories and MapStruct mappers are real. Three parameterized tests
+run for both purchases and sales and verify:
+
+- Persisted line quantities/prices and correctly signed stock movements.
+- Reloaded DTO product IDs and quantities after flushing/clearing JPA state.
+- Replacing a product removes the old line and movement instead of appending.
+- Deleting an aggregate removes its lines and stock, but retains product/grocery.
+- A forced failure after flushed writes rolls back aggregate, lines and stock;
+  absence is verified outside the failed transaction.
+
+All workflow fixtures have fixed names, quantities and timestamps. Their explicit
+transactions always roll back; no application defaults or schema are modified.
+The rollback test verifies participation in a surrounding transaction, not
+failure handling when a service starts its own transaction. Multi-line aggregates,
+same-product quantity edits, invalid-input failures, HTTP serialization and
+operation-ID collisions across operation types remain gaps.
 
 ## Evidence and limitations
 
@@ -59,5 +76,6 @@ does not guarantee ordering: the original SQL specified no tie-break. The query
 now explicitly orders both the limited subquery and outer result. No changes to
 quantity aggregation, month selection, joins or grocery filtering were made.
 
-Stage 2 is still in progress: purchase/sale cascades, stock replacement/deletion,
-transaction rollback and broader DTO/error contracts remain outstanding.
+The preceding 34-test baseline and the expanded 40-test build both passed on
+2026-09-04. No production changes or weakened assertions were needed. Stage 2
+remains in progress for broader HTTP/error contracts and the gaps above.

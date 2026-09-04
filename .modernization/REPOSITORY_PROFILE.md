@@ -13,7 +13,7 @@
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 53 |
-| Test classes / methods | 12 / 34 (30 default plus 4 opt-in PostgreSQL tests) |
+| Test classes / invocations | 13 / 40 (30 default plus 10 opt-in PostgreSQL cases) |
 | CI | None found |
 | Containers | None found |
 
@@ -116,7 +116,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
 ## Recommended next phase
 
 Stage 1 is green. Stage 2 is approved and in progress: reporting tests pass;
-service persistence, cascades, rollback and broader contracts remain. Do not
+single-line service persistence, replacement, deletion cascades and surrounding
+transaction rollback now pass too. Broader HTTP/error contracts remain. Do not
 combine this work with another framework upgrade.
 
 ## Discovery limits
