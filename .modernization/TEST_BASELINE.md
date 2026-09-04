@@ -11,7 +11,7 @@
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Default: 30 pass; PostgreSQL profile: 34 pass (29 Surefire + 5 Failsafe) |
+| Current result | Default: 30 pass; PostgreSQL profile: 40 pass (29 Surefire + 11 Failsafe) |
 
 ## Commands and observed result
 
@@ -83,6 +83,12 @@ the JAR. This is an artifact check, not a process-startup or database test.
 
 ## Coverage gaps
 
+The next Stage 2 slice adds six real-service PostgreSQL workflow invocations
+(three parameterized methods, purchase and sale each). The 40-test full build
+passes without skips. It covers persisted line prices/quantities, signed stock,
+product replacement, deletion cascades, DTO reload and rollback of flushed writes
+within a surrounding transaction. See `POSTGRES_TESTS.md` for exact limitations.
+
 Stage 2 adds four opt-in PostgreSQL report tests; all 34 tests pass without skips.
 Missing database settings were separately verified to fail. Native quantity
 ranking, month edges, grocery isolation, empty results and approved product-ID
@@ -100,12 +106,12 @@ No automated coverage was found for:
 
 - HTTP contracts outside the grocery create/get and validation/error cases
   covered by standalone MockMvc; full Spring Boot web configuration is untested
-- purchase/sale line-item persistence and cascades
+- multi-line purchase/sale aggregates and same-product quantity edits
 - default runtime configuration and demo-data startup (the context smoke test
   uses H2 create-drop and replaces the random DataPopulator with a mock)
-- PostgreSQL service persistence compatibility or Testcontainers execution
+- Testcontainers execution
 - stock movement update/delete edge cases
-- transaction and rollback behavior
+- service-owned transaction rollback on invalid-input or persistence failure
 - schema creation or migration
 - security expectations
 - packaged application startup

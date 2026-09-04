@@ -48,7 +48,7 @@ be covered as the safety net grows.
 
 ## Commit guidance
 
-For PostgreSQL reporting changes, also run `./mvnw -Pdev,postgres-tests clean verify`
+For PostgreSQL reporting or persistence changes, also run `./mvnw -Pdev,postgres-tests clean verify`
 with the dedicated database settings in `.modernization/POSTGRES_TESTS.md`.
 The default build deliberately excludes those tests; never claim it covers them.
 Do not target business data or enable schema auto-update in the test suite.

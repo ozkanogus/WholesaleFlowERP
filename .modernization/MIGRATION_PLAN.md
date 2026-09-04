@@ -95,7 +95,9 @@ edits and repository-specific corrections can be reviewed directly.
 - Status: IN PROGRESS; approval owner/date: owner / 2026-09-04.
 - Reporting slice verified: ranking, month edges, grocery isolation and empty
   results. Owner approved product-ID ascending tie ordering. See `POSTGRES_TESTS.md`.
-  Service persistence, cascades, rollback and broader contracts remain outstanding.
+  Six workflow cases also verify single-line persistence, replacement, deletion
+  cascades, DTO reload and surrounding-transaction rollback. Broader HTTP/error
+  contracts and service-owned failure rollback remain outstanding.
 - Purpose/rationale: make regressions distinguishable before changing Hibernate.
 - Scope: deterministic PostgreSQL tests for purchase/sale persistence and
   cascades, stock replacement/deletion, rollback, and report ordering/month
