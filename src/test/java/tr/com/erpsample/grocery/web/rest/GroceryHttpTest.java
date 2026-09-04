@@ -15,8 +15,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.converter.json.JacksonJsonHttpMessageConverter;
+import tools.jackson.databind.json.JsonMapper;
 import tr.com.erpsample.grocery.config.JacksonConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -35,10 +35,9 @@ class GroceryHttpTest {
     @BeforeEach
     void configureMvc() {
         JacksonConfiguration config = new JacksonConfiguration();
-        ObjectMapper json = new ObjectMapper().registerModules(config.javaTimeModule(),
-            config.jdk8TimeModule(), config.hibernate6Module());
+        JsonMapper json = JsonMapper.builder().addModule(config.hibernate7Module()).build();
         mvc = MockMvcBuilders.standaloneSetup(new GroceryResource(service, repository))
-            .setMessageConverters(new MappingJackson2HttpMessageConverter(json))
+            .setMessageConverters(new JacksonJsonHttpMessageConverter(json))
             .setControllerAdvice(new ExceptionTranslator()).build();
     }
 

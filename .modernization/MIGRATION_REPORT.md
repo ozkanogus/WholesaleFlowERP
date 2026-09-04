@@ -4,6 +4,11 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Stage 4d is GREEN: Boot 4.0.8 / Springdoc 3.0.3, Java 17 unchanged.
+56 full-profile / 40 default tests, fresh PostgreSQL runtime checks and unchanged
+OpenAPI/schema comparisons pass. See BOOT40_RESULT.md for corrections, retained
+Swagger Jackson 2 dependency and remaining risks. No push or deployment.
+
 Stage 4c is GREEN: native MVC error handling replaces Zalando, preserving tested
 contracts with explicitly approved unexpected-500 redaction. 55 full-profile /
 39 default tests, fresh packaged PostgreSQL smoke and exact OpenAPI path/schema

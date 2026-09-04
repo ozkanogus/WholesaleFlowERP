@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -40,6 +40,22 @@ class GroceryContextTest {
         assertSame(dataPopulator, context.getBean(DataPopulator.class));
         assertTrue(mockingDetails(dataPopulator).isMock());
         assertEquals(0, jdbc.queryForObject("select count(*) from grocery", Integer.class));
+    }
+
+    @Test
+    void mvcUsesJackson3WithHibernate7Module() {
+        var mapper = context.getBean(tools.jackson.databind.json.JsonMapper.class);
+        assertTrue(mapper.registeredModules().stream()
+            .anyMatch(tools.jackson.datatype.hibernate7.Hibernate7Module.class::isInstance));
+        assertTrue(context.getBeansOfType(com.fasterxml.jackson.databind.ObjectMapper.class).isEmpty());
+        var adapter = context.getBean(
+            org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.class);
+        var converters = adapter.getMessageConverters().stream()
+            .filter(org.springframework.http.converter.json.JacksonJsonHttpMessageConverter.class::isInstance)
+            .map(org.springframework.http.converter.json.JacksonJsonHttpMessageConverter.class::cast)
+            .toList();
+        assertFalse(converters.isEmpty());
+        assertTrue(converters.stream().anyMatch(converter -> converter.getMapper() == mapper));
     }
 
     @Test

@@ -8,12 +8,12 @@
 | Analyzed revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
 | Build | Maven, single-module JAR |
 | Language target | Java 17 (verified with Temurin 17.0.20.1) |
-| Framework | Spring Boot 3.5.16 (Stage 3e verified) |
+| Framework | Spring Boot 4.0.8 (Stage 4d verified) |
 | Application entry point | `tr.com.erpsample.grocery.GroceryApp` |
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 54 |
-| Test classes / invocations | 15 / 55 (39 default plus 16 opt-in PostgreSQL cases) |
+| Test classes / invocations | 15 / 56 (40 default plus 16 opt-in PostgreSQL cases) |
 | CI | None found |
 | Containers | None found |
 
@@ -71,14 +71,17 @@ job integration was found. Actuator and Springdoc dependencies are present.
 - Spring Data JPA with Hibernate and HikariCP.
 - PostgreSQL is configured for local runtime; H2 is configured for tests.
 - `spring.jpa.hibernate.ddl-auto=update` is present for the runtime profile.
-- Liquibase properties are enabled by the application class, but no changelog
-  or migration files and no Liquibase dependency were found.
+- Unused Liquibase properties registration was removed in Stage 4d; no changelog,
+  migration engine or schema migration was introduced.
 - A local database password is committed in the default properties. Treat it only as
   a disposable local default and replace it with external configuration during
   hardening.
 - Open Session in View is disabled.
 
 ## Build and dependency observations
+
+- Stage 4d: Boot 4.0.8 / Springdoc 3.0.3, Hibernate 7.2 and Jackson 3 MVC.
+  See BOOT40_RESULT.md. Older bullets below retain checkpoint history.
 
 - Stage 4c replaces Zalando with native MVC advice and an application-owned
   compatible JSON error model. Approved unexpected-500 redaction is verified.

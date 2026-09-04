@@ -2,7 +2,10 @@
 
 ## Baseline context
 
-Latest: Stage 4c on Boot 3.5.16 passes 55 full-profile and 39 default tests.
+Latest: Stage 4d on Boot 4.0.8 passes 56 full-profile and 40 default tests.
+A new context test verifies MVC uses Jackson 3 with Hibernate 7 module registration
+and no Jackson 2 application mapper bean. See BOOT40_RESULT.md.
+Stage 4c on Boot 3.5.16 previously passed 55 full-profile and 39 default tests.
 Three advice test methods cover routing, inherited status mappings and approved
 unexpected-500 redaction with both JSON Accept variants. See ERROR_HANDLER_RESULT.md.
 Stage 4b previously passed 52 full-profile and 36 default tests.
@@ -24,7 +27,7 @@ and packaged PostgreSQL smoke evidence.
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Default: 39 pass; PostgreSQL profile: 55 pass (38 Surefire + 17 Failsafe) |
+| Current result | Default: 40 pass; PostgreSQL profile: 56 pass (39 Surefire + 17 Failsafe) |
 
 ## Commands and observed result
 
@@ -75,13 +78,14 @@ one real-server case (36 default):
 | Grocery HTTP contracts | 4 | Standalone MockMvc with application Jackson modules |
 | Error advice contracts | 3 | Standalone MockMvc, routing/status compatibility and 500 redaction |
 | Persistence mappings | 2 | DataJpaTest with isolated H2 and rollback |
-| Application context and error contracts | 6 | SpringBootTest/MockMvc with isolated H2 and MockitoBean DataPopulator |
+| Application context, mapper and error contracts | 7 | SpringBootTest/MockMvc with isolated H2 and MockitoBean DataPopulator |
 | Embedded server | 1 | Real loopback Tomcat with isolated H2, factory/type and HTTP assertions |
 | Resource lookups | 5 | MockMvc checks existing and missing records across all resources |
 | Packaged entry point | 1 | Failsafe checks manifest and class entries after packaging |
 
 All tests use JUnit Jupiter annotations and Mockito's Jupiter extension. The
-original tests import JUnit 4 assertions; the new tests use Jupiter assertions.
+original JUnit 4 object-equality imports were adapted to Jupiter in Stage 4d;
+all tests now use Jupiter assertions.
 
 The new tests cover positive purchase quantities, negative sale quantities,
 replacement-call ordering, the current no-op for INVENTORY, and grocery resource

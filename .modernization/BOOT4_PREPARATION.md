@@ -3,9 +3,9 @@
 Reviewed 2026-09-04. Stage 4a was subsequently approved and completed; see
 `BOOT4_TEST_PREPARATION_RESULT.md`. Stage 4b is also complete; see
 `TOMCAT_RESULT.md`. Stage 4c is approved and verified in ERROR_HANDLER_RESULT.md.
-Stage 4d remains unapproved.
+Stage 4d is now approved and verified; see BOOT40_RESULT.md.
 Its candidate versions, exact scope and remaining gates are now documented in
-BOOT4_TRANSITION_PLAN.md. No framework change has been executed.
+BOOT4_TRANSITION_PLAN.md. The earlier planning assessment below is historical.
 Current baseline: Boot 3.5.16, Springdoc 2.8.17, Java 17, Maven 3.9.16.
 All 46 PostgreSQL-profile tests and 30 default tests passed at the preceding
 checkpoint; see `BOOT35_RESULT.md`. No new build was needed for this docs-only
