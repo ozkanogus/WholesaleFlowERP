@@ -27,7 +27,7 @@ export GROCERY_TEST_DB_USER=ozkanogus
 Keep `dev` explicitly enabled to preserve the baseline dependency profile.
 The regular `./mvnw clean verify` excludes PostgreSQL tests intentionally and
 still runs the original 30 tests. The opt-in command adds four report tests and
-six workflow invocations (40 total);
+twelve workflow/HTTP invocations (46 total);
 missing settings, an unavailable server, or an incompatible schema fail the run.
 
 ## Protected behavior
@@ -59,10 +59,22 @@ run for both purchases and sales and verify:
 
 All workflow fixtures have fixed names, quantities and timestamps. Their explicit
 transactions always roll back; no application defaults or schema are modified.
-The rollback test verifies participation in a surrounding transaction, not
-failure handling when a service starts its own transaction. Multi-line aggregates,
-same-product quantity edits, invalid-input failures, HTTP serialization and
-operation-ID collisions across operation types remain gaps.
+The original forced-failure test verifies participation in a surrounding
+transaction. Two additional cases call the real service without an outer
+transaction, use a nonexistent grocery reference, require PostgreSQL SQLSTATE
+23503, and verify no aggregate, line or movement remains. Each commits one
+prerequisite product and removes that exact row in a finally block. This covers
+foreign-key failure, not every failure timing or invalid-input case.
+
+Four full-context MockMvc cases cover purchase/sale DTO JSON (IDs, quantities,
+prices and ISO timestamp), supplied-ID create rejection, missing-ID update
+rejection, malformed JSON and empty 404 responses. The same application Jackson
+and exception-handler configuration is used, with no mock controllers/services.
+MockMvc runs synchronously in-process, not over a network socket; successful GET
+fixtures remain within a rollback-only test transaction.
+
+Multi-line aggregates, same-product quantity edits, nested validation semantics,
+HTTP create/update success, and operation-ID collisions across types remain gaps.
 
 ## Evidence and limitations
 
@@ -78,4 +90,7 @@ quantity aggregation, month selection, joins or grocery filtering were made.
 
 The preceding 34-test baseline and the expanded 40-test build both passed on
 2026-09-04. No production changes or weakened assertions were needed. Stage 2
-remains in progress for broader HTTP/error contracts and the gaps above.
+was then extended to 46 passing tests by service-owned failure and HTTP contracts.
+The Stage 2 planned verification slices are green; residual gaps above must be
+reviewed before approving the Jakarta stage. No production code changed in the
+workflow or failure/HTTP slices.

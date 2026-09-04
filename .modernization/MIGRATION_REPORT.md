@@ -4,6 +4,14 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Latest update (2026-09-04): Stage 2 is GREEN / COMPLETE. The full PostgreSQL
+build passes 46 tests (29 Surefire + 17 Failsafe), zero failures/errors/skips.
+The preceding 40-test baseline was green. New tests cover real service-owned
+foreign-key rollback and full-context purchase/sale DTO/error contracts. No
+production changes were required. Exact scope and residual gaps are documented
+in `POSTGRES_TESTS.md`; Stage 3 remains unapproved. Earlier slice updates below
+are retained as historical evidence, not the current stage status.
+
 Workflow-slice update (2026-09-04): 40 tests pass in the PostgreSQL profile
 (29 Surefire + 11 Failsafe), including six new service workflow cases. The
 preceding 34-test baseline was rerun successfully. Only tests and documentation
