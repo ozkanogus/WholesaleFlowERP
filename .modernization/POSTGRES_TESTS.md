@@ -1,6 +1,8 @@
 # PostgreSQL integration tests
 
-Stage 2 reporting and workflow slices, approved 2026-09-04. Framework remains Boot 2.7.18.
+Stage 2 reporting and workflow slices, approved 2026-09-04. They were repeated
+successfully on Boot 3.1.12 in Stage 3a; use `grocery_stage3_test` for the current
+checkpoint, leaving `grocery_stage2_test` as the Boot 2.7 baseline database.
 
 ## Isolated setup
 
@@ -18,7 +20,7 @@ database role where practical; the database-name guard is not a security boundar
 Set these environment variables (do not commit the password):
 
 ```sh
-export GROCERY_TEST_DB_URL=jdbc:postgresql://127.0.0.1:55432/grocery_stage2_test
+export GROCERY_TEST_DB_URL=jdbc:postgresql://127.0.0.1:55432/grocery_stage3_test
 export GROCERY_TEST_DB_USER=ozkanogus
 # Set GROCERY_TEST_DB_PASSWORD from your private local credential store.
 ./mvnw -B -ntp -Pdev,postgres-tests clean verify

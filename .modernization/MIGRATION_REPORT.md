@@ -4,6 +4,11 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Current checkpoint: Stage 3a GREEN (Boot 3.1.12/Jakarta), Java 17 unchanged.
+All 46 tests and packaged PostgreSQL smoke checks pass. See `STAGE3_RESULT.md`
+for exact dependency changes, compatibility fixes, commands and remaining risks.
+Later minor-version stages are not approved. Earlier updates below are historical.
+
 Latest update (2026-09-04): Stage 2 is GREEN / COMPLETE. The full PostgreSQL
 build passes 46 tests (29 Surefire + 17 Failsafe), zero failures/errors/skips.
 The preceding 40-test baseline was green. New tests cover real service-owned

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import tr.com.erpsample.grocery.domain.Grocery;
 import tr.com.erpsample.grocery.domain.Product;

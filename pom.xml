@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.18</version>
+		<version>3.1.12</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -32,17 +32,16 @@
 		<java.version>17</java.version>
 		<start-class>tr.com.erpsample.grocery.GroceryApp</start-class>
 
-		<spring-boot.version>2.7.18</spring-boot.version>
+		<spring-boot.version>3.1.12</spring-boot.version>
 		<postgres.test.exclude>**/Postgres*IT*</postgres.test.exclude>
 		
 		<validation-api.version>2.0.1.Final</validation-api.version>
-		<jaxb-runtime.version>2.3.3</jaxb-runtime.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
 		<maven-idea-plugin.version>2.2.1</maven-idea-plugin.version>
 		<properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
 		<modernizer-maven-plugin.version>2.3.0</modernizer-maven-plugin.version>
 
-		<problem-spring-web.version>0.27.0</problem-spring-web.version>
+		<problem-spring-web.version>0.28.0</problem-spring-web.version>
 		<testcontainers-postgresql.version>1.16.2</testcontainers-postgresql.version>
 	</properties>
 
@@ -53,16 +52,21 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation-api</artifactId>
+			<groupId>org.zalando</groupId>
+			<artifactId>jackson-datatype-problem</artifactId>
+			<version>0.27.1</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-jaxb-annotations</artifactId>
+			<artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-hibernate5</artifactId>
+			<artifactId>jackson-datatype-hibernate6</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
@@ -81,12 +85,12 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.orm</groupId>
 			<artifactId>hibernate-jpamodelgen</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
+			<groupId>org.hibernate.orm</groupId>
 			<artifactId>hibernate-core</artifactId>
 		</dependency>
 		<dependency>
@@ -166,8 +170,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.5</version>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -176,7 +180,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.22</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -256,14 +259,14 @@
 							</path>
 							<!-- For JPA static metamodel generation -->
 							<path>
-								<groupId>org.hibernate</groupId>
+								<groupId>org.hibernate.orm</groupId>
 								<artifactId>hibernate-jpamodelgen</artifactId>
 								<version>${hibernate.version}</version>
 							</path>
 							<path>
 								<groupId>org.glassfish.jaxb</groupId>
 								<artifactId>jaxb-runtime</artifactId>
-								<version>${jaxb-runtime.version}</version>
+								<version>${glassfish-jaxb.version}</version>
 							</path>
 						</annotationProcessorPaths>
 					</configuration>
@@ -495,7 +498,7 @@
 					<version>${mapstruct.version}</version>
 				</dependency>
 				<dependency>
-					<groupId>org.hibernate</groupId>
+					<groupId>org.hibernate.orm</groupId>
 					<artifactId>hibernate-jpamodelgen</artifactId>
 				</dependency>
 			</dependencies>

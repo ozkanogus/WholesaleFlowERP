@@ -2,6 +2,11 @@
 
 ## Baseline context
 
+Stage 3a repeat on Boot 3.1.12: all 46 opt-in tests and 30 default tests pass.
+Jakarta imports, the Hibernate module factory reference and test logging syntax
+were adapted; no assertions changed. See `STAGE3_RESULT.md` for initial failures
+and packaged PostgreSQL smoke evidence.
+
 | Field | Value |
 | --- | --- |
 | Original revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |

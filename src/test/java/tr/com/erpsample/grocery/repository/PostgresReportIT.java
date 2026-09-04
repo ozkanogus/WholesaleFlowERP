@@ -14,7 +14,7 @@ import org.springframework.test.context.DynamicPropertySource;
 /** Native SQL fixtures intentionally isolate reporting from service/cascade behavior. */
 @DataJpaTest(properties = {
     "spring.jpa.hibernate.ddl-auto=validate",
-    "spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL82Dialect"
+    "spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect"
 })
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class PostgresReportIT {

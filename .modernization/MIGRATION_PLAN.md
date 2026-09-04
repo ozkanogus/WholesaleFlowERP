@@ -116,7 +116,8 @@ edits and repository-specific corrections can be reviewed directly.
 
 ### Stage 3 — Jakarta and Boot 3 compatibility checkpoint
 
-- Status: PROPOSED; approval owner/date: owner / pending.
+- Status: PARTIAL; Stage 3a (Boot 3.1.12) approved and GREEN on 2026-09-04.
+  See `STAGE3_RESULT.md`. Later minor checkpoints remain PROPOSED/unapproved.
 - Stage 3a proposal: Boot 3.1.12 / Java 17, with exact candidate dependency
   changes and residual test risks in `STAGE3_COMPATIBILITY.md`. This first
   checkpoint is proposed to avoid a temporary Jackson override on Boot 3.0.
