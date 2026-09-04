@@ -13,7 +13,7 @@
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 53 |
-| Test classes / methods | 7 / 21 (including standalone MVC tests) |
+| Test classes / methods | 9 / 24 (including MVC, H2 persistence, and context tests) |
 | CI | None found |
 | Containers | None found |
 
@@ -120,6 +120,8 @@ combine safety-net work with the Spring Boot upgrade.
 ## Discovery limits
 
 This profile is based on static inspection plus baseline commands. Production
-compilation, dependency resolution, twenty-one tests, and JAR packaging
-are verified. Runtime behavior, generated schema, PostgreSQL integration, and
-OpenAPI output remain unverified.
+compilation, dependency resolution, twenty-four tests, and JAR packaging are
+verified. H2 schema creation and selected persistence mappings are exercised;
+the Spring context loads with demo-data generation mocked out. Packaged startup,
+PostgreSQL integration, native reporting queries, and OpenAPI output remain
+unverified.
