@@ -1,8 +1,53 @@
-# Java 21 migration — incomplete
+# Java 21 migration — verified
 
 2026-09-04. Owner approved execution after choosing Java 21 LTS.
-Branch: codex/java21-upgrade. Status: RED / awaiting plugin-upgrade approval.
-Main remains the verified Boot 4.0.8 / Java 17 application checkpoint.
+Branch: codex/java21-upgrade. Status: GREEN / COMPLETE.
+Owner subsequently approved upgrading Modernizer and completing verification.
+
+## Final result
+
+Temurin 21.0.12.1+1 / compiler release 21 / Boot 4.0.8 passes the approved gates.
+Modernizer 2.3.0 -> 2.7.0 is the only dependency/plugin upgrade. Its official
+[release notes](https://github.com/gaul/modernizer-maven-plugin/releases/tag/modernizer-maven-plugin-2.7.0)
+explicitly add ASM 9.5 for Java 21 compatibility. Selected as a bounded
+compatibility fix, not a claim that 2.7.0 is the latest release.
+
+The updated rule set flagged one guarded Optional.get() in SaleService's report
+mapping. Replaced it with orElseThrow() under the unchanged isPresent() guard:
+present products are still added; missing products are still omitted. No rule
+exclusions, skipped checks, test changes or business-contract changes.
+
+| Final check | Result |
+| --- | --- |
+| ./mvnw -B -ntp -Pdev,postgres-tests clean verify | 56 pass (39 Surefire + 17 Failsafe), 10.644 s |
+| ./mvnw -B -ntp clean verify | 40 pass (39 Surefire + 1 Failsafe), 7.244 s |
+| Failures / errors / skips | 0 / 0 / 0 in both builds |
+| Modernizer 2.7.0 | Pass in both builds, no exclusions |
+| Compiler | Main and test release 21; javap application major version 65 |
+| Generated sources | Existing MapStruct 1.4.2.Final mappings and Hibernate metamodel compile; PurchaseMapperImpl and PurchaseProduct_ inspected |
+| Packaged runtime | Starts on Java 21 against grocery21_smoke with ddl-auto=validate |
+| OpenAPI | All path definitions and component schemas equal to Boot 4 / Java 17 capture after key sorting |
+| Database schema | Before/after schema-only pg_dump equal after removing randomized dump restrict tokens |
+
+Runtime HTTP checks pass: list counts 10 groceries, 10 products, 10 purchases,
+30 sales and 400 stock movements; five empty missing-ID 404s; three report rows;
+Swagger UI; existing-ID business 400, malformed JSON 400 and validation 400 under
+both JSON Accept variants. SQL verifies 100 positive PURCHASE stock rows and
+300 negative SALE rows. The automated PostgreSQL suite covers deterministic
+reporting, transaction rollback and purchase/sale workflows. Smoke process stopped.
+
+Final logs: /private/tmp/java21-fixed-postgres.log, java21-fixed-default.log,
+java21-final-smoke.log. OpenAPI: /private/tmp/java21-final-openapi.json.
+Schema dumps: /private/tmp/java21-before.sql and java21-after.sql.
+The intermediate Modernizer rule failure remains in java21-modernizer-postgres.log.
+
+No CI/deployment or coverage percentage was measured. Mockito dynamic-agent
+warnings and existing configuration/security debt remain; no warnings suppressed.
+Java 17 is retained, but cannot execute the release-21 artifact. Rollback requires
+the preceding artifact or a reviewed revert and Java 17 rebuild. Java 25, broad
+dependency cleanup, virtual threads and business redesign remain out of scope.
+
+## Initial attempt history (superseded by the green result above)
 
 ## Completed
 

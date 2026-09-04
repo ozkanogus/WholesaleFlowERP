@@ -1,8 +1,8 @@
 # JDK upgrade assessment
 
-Prepared: 2026-09-04. Status: execution approved; paused at a build-plugin blocker.
-See [JAVA21_RESULT.md](JAVA21_RESULT.md). The assessment below is historical;
-Temurin 21 is now installed, but the Java 21-targeted stage is not verified.
+Prepared: 2026-09-04. Status: GREEN / COMPLETE, including the owner-approved
+Modernizer upgrade. See [JAVA21_RESULT.md](JAVA21_RESULT.md). The assessment and
+proposed gates below are retained as history; Java 21 verification now passes.
 
 ## Selected target
 

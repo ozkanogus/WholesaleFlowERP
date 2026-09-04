@@ -5,10 +5,9 @@ Planning does not authorize execution. Stage 1 was approved and verified on
 2026-09-04. Stages 2, 3a–3e and 4a–4d are verified; see BOOT40_RESULT.md.
 Historical baseline details below describe the original planning checkpoint.
 
-Next proposed stage: [JDK upgrade assessment](JDK_UPGRADE_PLAN.md), targeting
-Java 21 LTS as selected by the owner. Execution was approved and is paused at
-the Modernizer bytecode compatibility gate; see JAVA21_RESULT.md. The verified
-runtime remains Java 17 / Boot 4.0.8. Java 25 is deferred.
+The owner-selected Java 21 stage is GREEN, including the separately approved
+Modernizer compatibility fix; see JAVA21_RESULT.md and JDK_UPGRADE_PLAN.md.
+The verified runtime is Java 21 / Boot 4.0.8. Java 25 is deferred.
 
 ## Current state and target
 

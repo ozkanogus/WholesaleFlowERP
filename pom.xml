@@ -39,7 +39,7 @@
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
 		<maven-idea-plugin.version>2.2.1</maven-idea-plugin.version>
 		<properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
-		<modernizer-maven-plugin.version>2.3.0</modernizer-maven-plugin.version>
+		<modernizer-maven-plugin.version>2.7.0</modernizer-maven-plugin.version>
 		<testcontainers-postgresql.version>1.16.2</testcontainers-postgresql.version>
 	</properties>
 

@@ -35,14 +35,15 @@ not an immutable production contract.
 
 ## Verification expectations
 
-Once the baseline toolchain is repaired, the minimum repository check is:
+Use a Java 21 JDK through explicit `JAVA_HOME` and the committed Maven wrapper.
+Keep IDE builds from modifying Maven's `target` directory during verification.
+The minimum repository check is:
 
 ```bash
 ./mvnw clean verify
 ```
 
-Until then, use a compatible local Maven installation with Java 17 and clearly
-report that this is a fallback. A successful compile alone is not a completed
+A successful compile alone is not a completed
 verification. Relevant REST, service, persistence, and startup behavior should
 be covered as the safety net grows.
 
