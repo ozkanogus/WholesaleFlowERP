@@ -102,7 +102,7 @@ public class GroceryResource {
 	@GetMapping("/groceries/{id}")
 	public ResponseEntity<GroceryDTO> getProduct(@PathVariable Long id) {
 		Optional<GroceryDTO> groceryDTO = groceryService.findOne(id);
-		return ResponseEntity.ok(groceryDTO.orElse(null));
+		return ResponseEntity.of(groceryDTO);
 	}
 
 	/**

@@ -104,7 +104,7 @@ public class StockMovementResource {
 	@GetMapping("/stockMovements/{id}")
 	public ResponseEntity<StockMovementDTO> getStockMovement(@PathVariable Long id) {
 		Optional<StockMovementDTO> stockMovementDTO = stockMovementService.findOne(id);
-		return ResponseEntity.ok(stockMovementDTO.orElse(null));
+		return ResponseEntity.of(stockMovementDTO);
 	}
 
 	/**

@@ -65,7 +65,7 @@ local credentials should be supplied outside version control.
 
 ## Tests
 
-Nine test classes contain twenty-four unit, MVC, persistence, and context tests:
+Ten test classes contain twenty-nine unit, MVC, persistence, and context tests:
 
 - `GroceryServiceTest`
 - `ProductServiceTest`
@@ -76,8 +76,9 @@ Nine test classes contain twenty-four unit, MVC, persistence, and context tests:
 - `GroceryHttpTest`
 - `PersistenceMappingTest`
 - `GroceryContextTest`
+- `ResourceLookupHttpTest`
 
-The verified wrapper baseline compiles the application, runs all twenty-four
+The verified wrapper baseline compiles the application, runs all twenty-nine
 tests, and packages the executable JAR. See `.modernization/TEST_BASELINE.md`
 for the exact result and current test gaps.
 
