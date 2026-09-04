@@ -2,6 +2,9 @@
 
 ## Baseline context
 
+Latest repeat: Boot 3.2.12 passes the same 46 opt-in and 30 default tests with
+no test changes. Packaged PostgreSQL/API/OpenAPI checks pass; see `BOOT32_RESULT.md`.
+
 Stage 3a repeat on Boot 3.1.12: all 46 opt-in tests and 30 default tests pass.
 Jakarta imports, the Hibernate module factory reference and test logging syntax
 were adapted; no assertions changed. See `STAGE3_RESULT.md` for initial failures
