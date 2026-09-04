@@ -13,7 +13,7 @@
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 53 |
-| Test classes / invocations | 13 / 46 (30 default plus 16 opt-in PostgreSQL cases) |
+| Test classes / invocations | 13 / 51 (35 default plus 16 opt-in PostgreSQL cases) |
 | CI | None found |
 | Containers | None found |
 
