@@ -4,6 +4,15 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Stage 2 update: approved and IN PROGRESS. Reporting slice adds four PostgreSQL
+tests (34 total in the opt-in full build, zero failures/errors/skips). The owner
+approved product-ID ascending as the tie-break for equal current-month quantity
+sums per grocery. This is an intentional behavior clarification, not a framework
+change. Test infrastructure was committed separately from the query change.
+The original 30-test build remains green; missing PostgreSQL settings correctly
+fail the opt-in suite. See `POSTGRES_TESTS.md` for reproducible setup, fixture
+diagnostics and remaining Stage 2 gates. No later framework stage was executed.
+
 Stage 1 is GREEN / COMPLETE: Spring Boot 2.6.3 -> 2.7.18 with Java 17 and
 Maven 3.9.16 unchanged. The overall modernization is PARTIAL. The owner approved
 this stage on 2026-09-04. Later stages require separate approval.

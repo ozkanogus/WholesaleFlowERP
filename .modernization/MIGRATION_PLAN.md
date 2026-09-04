@@ -2,7 +2,7 @@
 
 Prepared: 2026-09-04. Owner/approver: repository owner.
 Planning does not authorize execution. Stage 1 was approved and verified on
-2026-09-04; all later stages remain PROPOSED.
+2026-09-04. Stage 2 is approved and in progress; Stages 3 and 4 remain PROPOSED.
 
 ## Current state and target
 
@@ -92,7 +92,10 @@ edits and repository-specific corrections can be reviewed directly.
 
 ### Stage 2 — Close high-risk verification gaps
 
-- Status: PROPOSED; approval owner/date: owner / pending.
+- Status: IN PROGRESS; approval owner/date: owner / 2026-09-04.
+- Reporting slice verified: ranking, month edges, grocery isolation and empty
+  results. Owner approved product-ID ascending tie ordering. See `POSTGRES_TESTS.md`.
+  Service persistence, cascades, rollback and broader contracts remain outstanding.
 - Purpose/rationale: make regressions distinguishable before changing Hibernate.
 - Scope: deterministic PostgreSQL tests for purchase/sale persistence and
   cascades, stock replacement/deletion, rollback, and report ordering/month

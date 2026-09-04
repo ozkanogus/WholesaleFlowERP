@@ -13,7 +13,7 @@
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 53 |
-| Test classes / methods | 11 / 30 (including a post-packaging check) |
+| Test classes / methods | 12 / 34 (30 default plus 4 opt-in PostgreSQL tests) |
 | CI | None found |
 | Containers | None found |
 
@@ -115,9 +115,9 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Recommended next phase
 
-Stage 1 is green. Seek approval for Stage 2 of `MIGRATION_PLAN.md`: deterministic
-PostgreSQL and contract coverage before crossing the Jakarta boundary. Do not
-combine safety-net work with another framework upgrade.
+Stage 1 is green. Stage 2 is approved and in progress: reporting tests pass;
+service persistence, cascades, rollback and broader contracts remain. Do not
+combine this work with another framework upgrade.
 
 ## Discovery limits
 
@@ -127,5 +127,5 @@ verified. H2 schema creation and selected persistence mappings are exercised;
 the Spring context loads with demo-data generation mocked out. A separate manual
 PostgreSQL 18.6 smoke test verified packaged startup, demo-data creation, list
 endpoints, native report execution, and OpenAPI availability. See
-`POSTGRES_SMOKE_TEST.md` for evidence and limits; deterministic PostgreSQL
-regression coverage remains outstanding.
+`POSTGRES_SMOKE_TEST.md` for evidence and limits. Four deterministic PostgreSQL
+reporting tests now pass; see `POSTGRES_TESTS.md` for scope and remaining gaps.

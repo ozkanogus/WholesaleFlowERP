@@ -33,6 +33,7 @@
 		<start-class>tr.com.erpsample.grocery.GroceryApp</start-class>
 
 		<spring-boot.version>2.7.18</spring-boot.version>
+		<postgres.test.exclude>**/Postgres*IT*</postgres.test.exclude>
 		
 		<validation-api.version>2.0.1.Final</validation-api.version>
 		<jaxb-runtime.version>2.3.3</jaxb-runtime.version>
@@ -404,6 +405,7 @@
 						<!-- Due to spring-boot repackage, without adding this property test 
 							classes are not found See https://github.com/spring-projects/spring-boot/issues/6254 -->
 						<classesDirectory>${project.build.outputDirectory}</classesDirectory>
+						<excludes><exclude>${postgres.test.exclude}</exclude></excludes>
 						<systemPropertyVariables>
 							<packagedApplicationJar>${project.build.directory}/${project.build.finalName}.jar</packagedApplicationJar>
 						</systemPropertyVariables>
@@ -451,6 +453,12 @@
 		</pluginManagement>
 	</build>
 	<profiles>
+		<profile>
+			<id>postgres-tests</id>
+			<properties>
+				<postgres.test.exclude>**/NoPostgresTestsExcluded*</postgres.test.exclude>
+			</properties>
+		</profile>
 		<profile>
 			<id>dev</id>
 			<activation>
