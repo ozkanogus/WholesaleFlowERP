@@ -6,7 +6,7 @@ leaving `grocery_stage2_test` as the Boot 2.7 baseline database.
 
 ## Isolated setup
 
-Current Boot 3.3 checkpoint uses `grocery33_test`, copied from the same baseline
+Current Boot 3.4 checkpoint uses `grocery34_test`, copied from the same baseline
 schema. Earlier checkpoint databases remain untouched.
 
 Use a dedicated database whose name ends in `_test`. Never use business data.
@@ -23,7 +23,7 @@ database role where practical; the database-name guard is not a security boundar
 Set these environment variables (do not commit the password):
 
 ```sh
-export GROCERY_TEST_DB_URL=jdbc:postgresql://127.0.0.1:55432/grocery33_test
+export GROCERY_TEST_DB_URL=jdbc:postgresql://127.0.0.1:55432/grocery34_test
 export GROCERY_TEST_DB_USER=ozkanogus
 # Set GROCERY_TEST_DB_PASSWORD from your private local credential store.
 ./mvnw -B -ntp -Pdev,postgres-tests clean verify
