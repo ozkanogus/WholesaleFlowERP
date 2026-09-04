@@ -8,7 +8,7 @@
 | Analyzed revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
 | Build | Maven, single-module JAR |
 | Language target | Java 17 (verified with Temurin 17.0.20.1) |
-| Framework | Spring Boot 3.2.12 (Stage 3b verified) |
+| Framework | Spring Boot 3.3.13 (Stage 3c verified) |
 | Application entry point | `tr.com.erpsample.grocery.GroceryApp` |
 | Runtime database | PostgreSQL |
 | Test database | H2 |
@@ -80,8 +80,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Build and dependency observations
 
-- The Spring Boot parent/property are now `3.2.12`, after the Jakarta checkpoint.
-  Java 17 is unchanged. See `BOOT32_RESULT.md` for current evidence;
+- The Spring Boot parent/property are now `3.3.13`, after the Jakarta checkpoint.
+  Java 17 is unchanged. See `BOOT33_RESULT.md` for current evidence;
   the original dependency observations below are historical discovery evidence.
 - The POM declares Java 17 and Maven 3.3.9.
 - The original configured start class used `groceryApp` instead of `GroceryApp`.
