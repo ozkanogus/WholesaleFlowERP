@@ -13,7 +13,7 @@
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 53 |
-| Test classes / methods | 10 / 29 (including MVC, H2 persistence, and context tests) |
+| Test classes / methods | 11 / 30 (including a post-packaging check) |
 | CI | None found |
 | Containers | None found |
 
@@ -82,8 +82,9 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 - The Spring Boot parent and explicit Spring Boot property are both `2.6.3`.
 - The POM declares Java 17 and Maven 3.3.9.
-- The configured start class uses `groceryApp`, while the actual class is
-  `GroceryApp`; case-sensitive packaging should verify this before migration.
+- The original configured start class used `groceryApp` instead of `GroceryApp`.
+  This was corrected after a post-packaging regression test reproduced the
+  manifest mismatch; the test now verifies that the manifest targets packaged classes.
 - The Maven wrapper was restored with wrapper 3.3.4, Maven 3.9.16, and an
   executable Unix launcher during baseline repair.
 - The POM includes both managed and explicit framework components, including
@@ -120,7 +121,7 @@ combine safety-net work with the Spring Boot upgrade.
 ## Discovery limits
 
 This profile is based on static inspection plus baseline commands. Production
-compilation, dependency resolution, twenty-nine tests, and JAR packaging are
+compilation, dependency resolution, thirty tests, and JAR packaging are
 verified. H2 schema creation and selected persistence mappings are exercised;
 the Spring context loads with demo-data generation mocked out. Packaged startup,
 PostgreSQL integration, native reporting queries, and OpenAPI output remain

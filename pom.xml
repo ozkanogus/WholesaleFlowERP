@@ -30,7 +30,7 @@
 		<!-- Build properties -->
 		<maven.version>3.3.9</maven.version>
 		<java.version>17</java.version>
-		<start-class>tr.com.erpsample.grocery.groceryApp</start-class>
+		<start-class>tr.com.erpsample.grocery.GroceryApp</start-class>
 
 		<spring-boot.version>2.6.3</spring-boot.version>
 		
@@ -404,6 +404,9 @@
 						<!-- Due to spring-boot repackage, without adding this property test 
 							classes are not found See https://github.com/spring-projects/spring-boot/issues/6254 -->
 						<classesDirectory>${project.build.outputDirectory}</classesDirectory>
+						<systemPropertyVariables>
+							<packagedApplicationJar>${project.build.directory}/${project.build.finalName}.jar</packagedApplicationJar>
+						</systemPropertyVariables>
 						<!-- Force alphabetical order to have a reproducible build -->
 						<runOrder>alphabetical</runOrder>
 						<includes>

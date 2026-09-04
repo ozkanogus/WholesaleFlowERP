@@ -11,7 +11,7 @@
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Build success; 29 tests pass |
+| Current result | Build success; 30 tests pass (29 Surefire + 1 Failsafe) |
 
 ## Commands and observed result
 
@@ -47,7 +47,8 @@ Maven also reports a pre-existing model warning: the
 
 The original four classes contained nine tests. The first characterization slice
 added eight tests in two classes. MVC, persistence, and context tests bring the
-total to twenty-four. Five lookup regression tests bring the current total to twenty-nine:
+total to twenty-four. Five lookup regressions and one packaging regression bring
+the current total to thirty:
 
 | Area | Tests | Style |
 | --- | ---: | --- |
@@ -61,6 +62,7 @@ total to twenty-four. Five lookup regression tests bring the current total to tw
 | Persistence mappings | 2 | DataJpaTest with isolated H2 and rollback |
 | Application context | 1 | SpringBootTest with isolated H2 and mocked DataPopulator |
 | Resource lookups | 5 | MockMvc checks existing and missing records across all resources |
+| Packaged entry point | 1 | Failsafe checks manifest and class entries after packaging |
 
 All tests use JUnit Jupiter annotations and Mockito's Jupiter extension. The
 original tests import JUnit 4 assertions; the new tests use Jupiter assertions.
@@ -73,6 +75,11 @@ resources, despite controller documentation promising 404. Five regression
 tests reproduced the failure before a separate behavior fix. All five lookup
 endpoints now return 404 with an empty body for missing records and retain 200
 with the DTO for existing records. No dependency upgrade was included.
+
+The packaged JAR originally named `groceryApp` as its Start-Class, but the class
+is `GroceryApp`. A Failsafe test reproduced the mismatch before correcting the
+POM. It now verifies the manifest's application and launcher entries exist in
+the JAR. This is an artifact check, not a process-startup or database test.
 
 ## Coverage gaps
 
@@ -96,7 +103,7 @@ No coverage measurement or CI workflow was found.
 
 - Java 17 and Maven wrapper prerequisites are reproducible.
 - `./mvnw -version` reports Maven 3.9.16 and Temurin 17.0.20.1.
-- `./mvnw clean verify` succeeds with 29 passing tests after lookup regression coverage.
+- `./mvnw clean verify` succeeds with 30 passing tests, including the packaged-artifact check.
 - The original bootstrap and test-compilation failures are recorded separately.
 - Baseline repair changed no framework version or application behavior; the later
   missing-record response correction is documented separately above.
