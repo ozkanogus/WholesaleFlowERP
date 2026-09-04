@@ -83,6 +83,11 @@ the JAR. This is an artifact check, not a process-startup or database test.
 
 ## Coverage gaps
 
+Stage 1 repeated `./mvnw -B -ntp clean verify` on Boot 2.7.18 with the same
+Java 17 toolchain: 29 Surefire and 1 Failsafe tests passed, zero failures,
+errors or skips (17.329 seconds). No tests or assertions changed. The packaged
+application also passed fresh PostgreSQL smoke checks; see `MIGRATION_REPORT.md`.
+
 Manual PostgreSQL startup and API checks passed; see `POSTGRES_SMOKE_TEST.md`.
 They do not replace the automated coverage gaps below.
 

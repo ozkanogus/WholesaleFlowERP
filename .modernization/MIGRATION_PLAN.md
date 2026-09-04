@@ -1,11 +1,13 @@
 # Proposed migration plan
 
 Prepared: 2026-09-04. Owner/approver: repository owner.
-Planning does not authorize execution. All stages below are PROPOSED.
+Planning does not authorize execution. Stage 1 was approved and verified on
+2026-09-04; all later stages remain PROPOSED.
 
 ## Current state and target
 
-Java 17, Spring Boot 2.6.3, Maven 3.9.16; 30 automated tests pass.
+Java 17, Spring Boot 2.7.18, Maven 3.9.16; 30 automated tests pass.
+The pre-stage framework baseline was Spring Boot 2.6.3.
 Packaged startup and API smoke tests passed against isolated PostgreSQL 18.6.
 See `TEST_BASELINE.md` and `POSTGRES_SMOKE_TEST.md` for limitations.
 
@@ -72,7 +74,9 @@ edits and repository-specific corrections can be reviewed directly.
 
 ### Stage 1 — Boot 2.7 bridge
 
-- Status: PROPOSED; approval owner/date: owner / pending.
+- Status: GREEN / COMPLETE; approval owner/date: owner / 2026-09-04.
+- Evidence: `MIGRATION_REPORT.md`; 30 unchanged tests pass and fresh-database
+  packaged smoke checks pass with matching columns and constraints.
 - Purpose/rationale: establish the prerequisite baseline for Boot 3.
 - Scope: parent and explicit Boot version to 2.7.18; only directly required
   compatibility fixes. Keep Java 17 and the Maven wrapper unchanged.
