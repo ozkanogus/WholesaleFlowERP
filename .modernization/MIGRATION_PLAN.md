@@ -5,6 +5,10 @@ Planning does not authorize execution. Stage 1 was approved and verified on
 2026-09-04. Stages 2, 3a–3e and 4a–4d are verified; see BOOT40_RESULT.md.
 Historical baseline details below describe the original planning checkpoint.
 
+Next proposed stage: [JDK upgrade assessment](JDK_UPGRADE_PLAN.md), recommending
+Java 25 LTS with Java 21 as an alternative. Target and execution await approval;
+the verified runtime remains Java 17 / Boot 4.0.8.
+
 ## Current state and target
 
 Java 17, Spring Boot 2.7.18, Maven 3.9.16; 30 automated tests pass.
