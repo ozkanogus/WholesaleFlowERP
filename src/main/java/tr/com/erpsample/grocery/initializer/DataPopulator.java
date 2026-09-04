@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import tr.com.erpsample.grocery.domain.Grocery;
@@ -25,6 +26,7 @@ import tr.com.erpsample.grocery.service.dto.SaleDTO;
 import tr.com.erpsample.grocery.service.mapper.GroceryMapper;
 
 @Component
+@ConditionalOnProperty(name = "grocery.demo-data.enabled", havingValue = "true")
 public class DataPopulator implements CommandLineRunner {
 
 	@Autowired

@@ -2,6 +2,11 @@
 
 ## Baseline context
 
+Configuration hardening: 44 default / 60 PostgreSQL-profile tests pass.
+Three conditional-demo tests and one packaged-configuration guard were added.
+Existing enforced DataPopulator mock tests explicitly enable the conditional bean.
+See CONFIGURATION_HARDENING_RESULT.md; older totals below are checkpoint history.
+
 Latest: Java 21 / Boot 4.0.8 passes 56 full-profile and 40 default tests with
 Modernizer 2.7.0, no failures/errors/skips. See JAVA21_RESULT.md.
 Stage 4d on Java 17 previously passed the same totals.
@@ -29,7 +34,7 @@ and packaged PostgreSQL smoke evidence.
 | Available Java | Temurin 21.0.12.1; Java 17 retained for rollback |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Default: 40 pass; PostgreSQL profile: 56 pass (39 Surefire + 17 Failsafe) |
+| Current result | Default: 44 pass; PostgreSQL profile: 60 pass (42 Surefire + 18 Failsafe) |
 
 ## Commands and observed result
 

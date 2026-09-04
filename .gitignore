@@ -1,6 +1,9 @@
 ######################
 # Project Specific
 ######################
+.env
+.env.*
+!.env.example
 /target/classes/static/**
 /src/test/javascript/coverage/
 

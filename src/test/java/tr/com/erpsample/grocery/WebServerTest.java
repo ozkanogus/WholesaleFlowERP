@@ -19,6 +19,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import tr.com.erpsample.grocery.initializer.DataPopulator;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = {
+    "grocery.demo-data.enabled=true",
     "server.address=127.0.0.1",
     "spring.datasource.url=jdbc:h2:mem:webserver-test;DB_CLOSE_DELAY=-1",
     "spring.jpa.hibernate.ddl-auto=create-drop"

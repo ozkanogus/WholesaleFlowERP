@@ -68,20 +68,31 @@ The local side-by-side installation used for verification is
 ```bash
 export JAVA_HOME=/Users/ozkanogus/.local/opt/temurin-21
 ./mvnw clean verify
-./mvnw spring-boot:run
 ```
 
 Java 17 remains available for rebuilding the previous checkpoint, but cannot run
 the Java 21-targeted artifact. See [Java 21 verification](.modernization/JAVA21_RESULT.md).
 
-The default application configuration expects PostgreSQL at
-`jdbc:postgresql://localhost:5432/grocery` and listens on port `8082`.
-Review `src/main/resources/config/application.properties` before running;
-local credentials should be supplied outside version control.
+Before running, supply `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, and
+`SPRING_DATASOURCE_PASSWORD` through your environment or secret manager, then run
+`./mvnw spring-boot:run`. No runtime connection credentials are bundled. The
+application listens on port `8082` unless `SERVER_PORT` overrides it.
+
+Demo data is disabled by default. Set `GROCERY_DEMO_DATA_ENABLED=true` only for
+an isolated disposable database to opt in to the existing random sample data.
+The initializer is not a migration tool or a reliable repair of partially seeded
+data. Keep it disabled for real data. Tests use isolated settings and explicit
+fixtures; no local PostgreSQL password is needed for the default build.
+
+Schema auto-update is still a known limitation, pending versioned migrations.
+Use `SPRING_JPA_HIBERNATE_DDL_AUTO=validate` with a prepared schema for safe runtime
+checks. `.env` files are ignored by Git but are not automatically loaded by Spring
+Boot. Do not commit passwords. Previously committed credentials remain in Git
+history and must be rotated anywhere they were reused.
 
 ## Tests
 
-The default build runs 40 tests across 13 unit, MVC, persistence, context,
+The default build runs 44 tests across 14 unit, MVC, persistence, context,
 server and packaging test classes:
 
 - `GroceryServiceTest`
@@ -96,11 +107,12 @@ server and packaging test classes:
 - `WebServerTest`
 - `ErrorAdviceContractTest`
 - `ResourceLookupHttpTest`
+- `DataPopulatorConfigurationTest`
 - `PackagedApplicationIT` (runs after packaging during `verify`)
 
-The verified wrapper baseline compiles the application, runs all 40 default
+The verified wrapper baseline compiles the application, runs all 44 default
 tests, and packages the executable JAR. The PostgreSQL profile adds 16 tests
-(56 total across 15 classes). See `.modernization/TEST_BASELINE.md`
+(60 total across 16 classes). See `.modernization/TEST_BASELINE.md`
 for the exact result and current test gaps.
 
 ## Modernization status
