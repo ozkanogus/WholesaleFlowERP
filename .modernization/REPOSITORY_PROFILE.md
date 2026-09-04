@@ -123,6 +123,8 @@ combine safety-net work with the Spring Boot upgrade.
 This profile is based on static inspection plus baseline commands. Production
 compilation, dependency resolution, thirty tests, and JAR packaging are
 verified. H2 schema creation and selected persistence mappings are exercised;
-the Spring context loads with demo-data generation mocked out. Packaged startup,
-PostgreSQL integration, native reporting queries, and OpenAPI output remain
-unverified.
+the Spring context loads with demo-data generation mocked out. A separate manual
+PostgreSQL 18.6 smoke test verified packaged startup, demo-data creation, list
+endpoints, native report execution, and OpenAPI availability. See
+`POSTGRES_SMOKE_TEST.md` for evidence and limits; deterministic PostgreSQL
+regression coverage remains outstanding.

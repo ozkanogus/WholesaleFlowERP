@@ -83,6 +83,9 @@ the JAR. This is an artifact check, not a process-startup or database test.
 
 ## Coverage gaps
 
+Manual PostgreSQL startup and API checks passed; see `POSTGRES_SMOKE_TEST.md`.
+They do not replace the automated coverage gaps below.
+
 No automated coverage was found for:
 
 - HTTP contracts outside the grocery create/get and validation/error cases
