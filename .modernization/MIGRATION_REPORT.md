@@ -4,6 +4,9 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Boot 4 planning review is recorded in `BOOT4_PREPARATION.md`. No implementation
+was performed; test preparation is the next proposed approval gate.
+
 Latest: Stage 3e GREEN (Boot 3.5.16 / Springdoc 2.8.17), Java 17 unchanged.
 All 46 tests and packaged PostgreSQL/API/OpenAPI checks pass. Only three POM
 versions changed. See `BOOT35_RESULT.md`; no next stage or push is authorized.
