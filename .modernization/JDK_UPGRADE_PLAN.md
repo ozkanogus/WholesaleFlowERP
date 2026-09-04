@@ -1,7 +1,8 @@
 # JDK upgrade assessment
 
-Prepared: 2026-09-04. Status: Java 21 target selected by owner; execution pending.
-No JDK was installed or changed during this assessment.
+Prepared: 2026-09-04. Status: execution approved; paused at a build-plugin blocker.
+See [JAVA21_RESULT.md](JAVA21_RESULT.md). The assessment below is historical;
+Temurin 21 is now installed, but the Java 21-targeted stage is not verified.
 
 ## Selected target
 
