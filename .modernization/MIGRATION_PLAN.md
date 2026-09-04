@@ -116,8 +116,9 @@ edits and repository-specific corrections can be reviewed directly.
 
 ### Stage 3 — Jakarta and Boot 3 compatibility checkpoint
 
-Stage 3b (Boot 3.2.12 / Springdoc 2.5.0) approved and GREEN on 2026-09-04.
-See `BOOT32_RESULT.md` for scope, evidence and rollback. Later stages unapproved.
+Stage 3c (Boot 3.3.13 / Springdoc 2.6.0) approved and GREEN on 2026-09-04.
+See `BOOT33_RESULT.md` for scope, evidence and rollback. Stage 3b evidence remains
+in `BOOT32_RESULT.md`. Later stages unapproved.
 
 - Status: PARTIAL; Stage 3a (Boot 3.1.12) approved and GREEN on 2026-09-04.
   See `STAGE3_RESULT.md`. Later minor checkpoints remain PROPOSED/unapproved.
