@@ -146,8 +146,9 @@ reports remain historical evidence. Boot 4 execution remains unapproved.
 ### Stage 4 — Boot 4 candidate, conditional
 
 Preparation review: see `BOOT4_PREPARATION.md` for repository evidence and
-separately gated steps 4a–4d. Recommended next step is test-only preparation
-on Boot 3.5; framework execution remains unapproved.
+separately gated steps 4a–4d. Stage 4a is GREEN; see
+`BOOT4_TEST_PREPARATION_RESULT.md`. Next is server clarification (4b), pending
+approval. Framework execution remains unapproved.
 
 - Status: PROPOSED; approval owner/date: owner / pending.
 - Purpose/rationale: reach an appropriately maintained framework line after the

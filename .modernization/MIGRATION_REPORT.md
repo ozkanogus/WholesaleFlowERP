@@ -4,8 +4,9 @@ Updated: 2026-09-04.
 
 ## Outcome
 
-Boot 4 planning review is recorded in `BOOT4_PREPARATION.md`. No implementation
-was performed; test preparation is the next proposed approval gate.
+Boot 4 preparation Stage 4a is GREEN: MockitoBean replacement and five new
+full-context error contracts; 51 full-profile / 35 default cases pass. No
+production changes. See `BOOT4_TEST_PREPARATION_RESULT.md`. Stage 4b awaits approval.
 
 Latest: Stage 3e GREEN (Boot 3.5.16 / Springdoc 2.8.17), Java 17 unchanged.
 All 46 tests and packaged PostgreSQL/API/OpenAPI checks pass. Only three POM
