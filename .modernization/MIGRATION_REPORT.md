@@ -4,9 +4,13 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Stage 4b is GREEN: Tomcat was already active; redundant Undertow was removed.
+52 full-profile / 36 default cases and packaged PostgreSQL smoke pass.
+See `TOMCAT_RESULT.md`. Error-adapter replacement remains unapproved.
+
 Boot 4 preparation Stage 4a is GREEN: MockitoBean replacement and five new
 full-context error contracts; 51 full-profile / 35 default cases pass. No
-production changes. See `BOOT4_TEST_PREPARATION_RESULT.md`. Stage 4b awaits approval.
+production changes. See `BOOT4_TEST_PREPARATION_RESULT.md` for that earlier step.
 
 Latest: Stage 3e GREEN (Boot 3.5.16 / Springdoc 2.8.17), Java 17 unchanged.
 All 46 tests and packaged PostgreSQL/API/OpenAPI checks pass. Only three POM

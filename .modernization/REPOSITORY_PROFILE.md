@@ -13,7 +13,7 @@
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 53 |
-| Test classes / invocations | 13 / 51 (35 default plus 16 opt-in PostgreSQL cases) |
+| Test classes / invocations | 14 / 52 (36 default plus 16 opt-in PostgreSQL cases) |
 | CI | None found |
 | Containers | None found |
 
@@ -80,6 +80,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Build and dependency observations
 
+- Stage 4b verified Tomcat as the active server before and after removing the
+  redundant Undertow starter. See `TOMCAT_RESULT.md` for runtime and JAR evidence.
 - The Spring Boot parent/property are now `3.5.16`, after the Jakarta checkpoint.
   Java 17 is unchanged. See `BOOT35_RESULT.md` for current evidence;
   the original dependency observations below are historical discovery evidence.

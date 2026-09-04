@@ -1,7 +1,8 @@
 # Boot 4 preparation — decision gate
 
 Reviewed 2026-09-04. Stage 4a was subsequently approved and completed; see
-`BOOT4_TEST_PREPARATION_RESULT.md`. Stages 4b–4d remain unapproved.
+`BOOT4_TEST_PREPARATION_RESULT.md`. Stage 4b is also complete; see
+`TOMCAT_RESULT.md`. Stages 4c–4d remain unapproved.
 Current baseline: Boot 3.5.16, Springdoc 2.8.17, Java 17, Maven 3.9.16.
 All 46 PostgreSQL-profile tests and 30 default tests passed at the preceding
 checkpoint; see `BOOT35_RESULT.md`. No new build was needed for this docs-only
@@ -61,7 +62,7 @@ only after verification. No push or deployment is included.
 
 ## Target and unresolved work
 
-Stage 4a is now complete; the next approval gate is 4b, not a Boot 4 upgrade. Boot 4.0
+Stages 4a–4b are complete; the next gate is the error adapter (4c), not Boot 4. Boot 4.0
 is the narrower framework transition candidate; Boot 4.1 is an alternative to
 evaluate for the eventual deployment target and support window. Exact patches
 are intentionally not locked while error/server decisions are unresolved.
