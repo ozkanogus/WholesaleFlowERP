@@ -4,14 +4,14 @@
 
 | Field | Value |
 | --- | --- |
-| Revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
+| Original revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
 | Date | 2026-09-04 |
 | Operating system | macOS 26.5.1, arm64 |
 | Declared Java | 17 |
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Result | Build success; 9 tests pass |
+| Current result | Build success; 17 tests pass |
 
 ## Commands and observed result
 
@@ -45,7 +45,8 @@ Maven also reports a pre-existing model warning: the
 
 ## Existing automated tests
 
-Static inspection found four service test classes and nine test methods:
+The original four classes contained nine tests. The first characterization slice
+adds eight tests in two classes, for seventeen tests in total:
 
 | Area | Tests | Style |
 | --- | ---: | --- |
@@ -53,16 +54,24 @@ Static inspection found four service test classes and nine test methods:
 | Product service | 1 | Mockito unit test |
 | Purchase service | 3 | Mockito unit tests |
 | Sale service | 3 | Mockito unit tests |
+| Stock movement service | 3 | Mockito characterization tests |
+| Grocery resource | 5 | Direct controller-method characterization tests |
 
-The tests use JUnit Jupiter test annotations and Mockito's Jupiter extension,
-with assertions imported from JUnit 4. This mixed style should be normalized
-only after the current suite can be executed.
+All tests use JUnit Jupiter annotations and Mockito's Jupiter extension. The
+original tests import JUnit 4 assertions; the new tests use Jupiter assertions.
+
+The new tests cover positive purchase quantities, negative sale quantities,
+replacement-call ordering, the current no-op for INVENTORY, and grocery resource
+responses. They document current behavior, not approval of every business rule.
+In particular, missing groceries currently return HTTP 200 with a null body,
+despite the controller documentation promising 404. Correct this separately.
 
 ## Coverage gaps
 
 No automated coverage was found for:
 
-- REST status codes, payloads, validation, or exception translation
+- HTTP routing, JSON payloads, validation, or exception translation (the new
+  controller tests invoke Java methods directly, not the HTTP stack)
 - repository queries and JPA mappings
 - application-context startup and configuration binding
 - PostgreSQL compatibility or Testcontainers execution
@@ -78,6 +87,6 @@ No coverage measurement or CI workflow was found.
 
 - Java 17 and Maven wrapper prerequisites are reproducible.
 - `./mvnw -version` reports Maven 3.9.16 and Temurin 17.0.20.1.
-- `./mvnw clean verify` succeeds with 9 passing tests.
+- `./mvnw clean verify` succeeds with 17 passing tests after characterization.
 - The original bootstrap and test-compilation failures are recorded separately.
 - No framework version or application behavior was changed.
