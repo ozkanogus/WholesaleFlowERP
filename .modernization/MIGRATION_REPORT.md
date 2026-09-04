@@ -4,9 +4,9 @@ Updated: 2026-09-04.
 
 ## Outcome
 
-Latest: Stage 3d GREEN (Boot 3.4.13 / Springdoc 2.7.0), Java 17 unchanged.
+Latest: Stage 3e GREEN (Boot 3.5.16 / Springdoc 2.8.17), Java 17 unchanged.
 All 46 tests and packaged PostgreSQL/API/OpenAPI checks pass. Only three POM
-versions changed. See `BOOT34_RESULT.md`; no next stage or push is authorized.
+versions changed. See `BOOT35_RESULT.md`; no next stage or push is authorized.
 
 Earlier checkpoint: Stage 3a GREEN (Boot 3.1.12/Jakarta), Java 17 unchanged.
 All 46 tests and packaged PostgreSQL smoke checks pass. See `STAGE3_RESULT.md`
