@@ -69,6 +69,17 @@ class PostgresReportIT {
         assertEquals(List.of(), sales.findTopSoldThreeProduct(grocery()));
     }
 
+    @Test
+    void breaksQuantityTiesByProductIdBeforeApplyingLimit() {
+        long grocery = grocery();
+        long first = product(), second = product(), third = product(), fourth = product();
+        sale(grocery, fourth, 5, "now()", 1);
+        sale(grocery, third, 5, "now()", 1);
+        sale(grocery, second, 5, "now()", 1);
+        sale(grocery, first, 5, "now()", 1);
+        assertEquals(List.of(first, second, third), sales.findTopSoldThreeProduct(grocery));
+    }
+
     private long nextId() {
         return jdbc.queryForObject("select nextval('sequence_generator')", Long.class);
     }

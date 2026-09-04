@@ -20,6 +20,7 @@ public interface SaleRepository extends JpaRepository<Sale, Long>, JpaSpecificat
 	@Query(value = "select sub.product_id from \r\n"
 			+ "	(select b.product_id,sum(b.count) as count from public.sale a left join public.sale_product b on a.id = b.sale_id \r\n"
 			+ "			where to_char(a.created_date,'YYYY-MM')  =to_char(now(),'YYYY-MM') and a.grocery_id=:paramGroceryId\r\n"
-			+ "			group by b.product_id order by count desc \r\n" + "			limit 3) sub ", nativeQuery = true)
+			+ "			group by b.product_id order by count desc, b.product_id asc \r\n"
+			+ "			limit 3) sub order by sub.count desc, sub.product_id asc", nativeQuery = true)
 	List<Long> findTopSoldThreeProduct(@Param("paramGroceryId") Long groceryId);
 }

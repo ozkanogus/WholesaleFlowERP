@@ -38,6 +38,11 @@ The API is rooted at `/api` and provides CRUD operations for:
 
 It also exposes `GET /api/sales/topSold/{groceryId}`.
 
+This report ranks current-calendar-month quantities for one grocery, returning
+at most three products, with product ID ascending as the tie-breaker. Month
+selection follows the PostgreSQL session timezone. See
+[PostgreSQL test setup](.modernization/POSTGRES_TESTS.md) for opt-in report tests.
+
 ## Technology baseline
 
 - Java 17 is declared in Maven (a local JDK is required).
