@@ -1,14 +1,14 @@
 # JDK upgrade assessment
 
-Prepared: 2026-09-04. Status: PROPOSED — target and execution await owner approval.
+Prepared: 2026-09-04. Status: Java 21 target selected by owner; execution pending.
 No JDK was installed or changed during this assessment.
 
-## Recommendation
+## Selected target
 
-Move directly from Temurin 17 to Temurin 25 LTS in a separate, verified stage.
-Java 21 LTS is a viable alternative if a future deployment platform requires it;
-no such constraint has been identified in this never-deployed application.
-An intermediate Java 21 migration is not a framework prerequisite.
+Move from Temurin 17 to Temurin 21 LTS in a separate, verified stage, following
+the owner's preference. Java 25 is deferred, not a required subsequent stage.
+Java 21 is within the current framework's supported range; application-level
+compatibility remains subject to the verification gates below.
 
 Spring Framework 7 recommends JDK 25 while retaining a Java 17 baseline.
 Adoptium lists availability through at least September 2031 for Java 25 and
@@ -29,7 +29,7 @@ for this documentation-only assessment. Only Java 17 is installed locally.
 | Lombok 1.18.46 | Changelog introduced Java 25 support in 1.18.40; no speculative upgrade needed |
 | Byte Buddy 1.17.8 | Official compatibility table lists Java 25+ support from 1.17.0; Mockito behavior still requires execution |
 | MapStruct 1.4.2.Final | Old processor remains an explicit uncertainty; clean annotation processing and generated mappings must pass |
-| Hibernate processor / Maven plugins | Current managed versions and Maven 3.9.16 are identified, but this application's Java 25 build is untested |
+| Hibernate processor / Maven plugins | Current managed versions and Maven 3.9.16 are identified, but this application's Java 21 build is untested |
 | Deployment | No established CI, container or production runtime imposes a Java 21 constraint |
 
 Framework compatibility is not proof of application compatibility. Java 21 and
@@ -39,17 +39,17 @@ Framework compatibility is not proof of application compatibility. Java 21 and
 
 1. Start a focused `codex/` implementation branch from clean local main. Preserve
    the verified Java 17 artifact and baseline evidence. Do not push.
-2. Install pinned, checksum-verified Temurin 25 alongside Java 17. Use explicit
+2. Install pinned, checksum-verified Temurin 21 alongside Java 17. Use explicit
    per-command JAVA_HOME; do not change global shell or OS Java selection.
-3. With the compiler release still 17, run the existing build on JDK 25 and smoke
+3. With the compiler release still 17, run the existing build on JDK 21 and smoke
    the preserved Java 17 artifact on that runtime. This separates runtime and
    build-tool failures from a change in the emitted class-file version.
-4. Change the POM Java target to 25, retaining Boot and dependency versions.
+4. Change the POM Java target to 21, retaining Boot and dependency versions.
    Inspect effective compiler release and generated MapStruct/JPA sources.
 5. Run `./mvnw clean verify` and `./mvnw -Pdev,postgres-tests clean verify` using
    an isolated schema-only PostgreSQL database and private environment settings.
    Require all existing assertions and no unexpected skips.
-6. Smoke the packaged Java 25 artifact with schema validation, compare schema,
+6. Smoke the packaged Java 21 artifact with schema validation, compare schema,
    OpenAPI and HTTP/error contracts, and exercise the established workflows.
 7. Record versions, commands, warnings, test totals and runtime results. Update
    README/toolchain guidance and modernization records before proposing a merge.
@@ -67,7 +67,7 @@ framework upgrades, business changes, schema changes, CI and deployment setup.
 The verified Java 17 / Boot 4 checkpoint remains the stopping point until every
 gate passes. Keep Java 17 installed. If implementation fails, retain evidence
 on the feature branch; do not merge. After a merge, use a reviewed revert and
-rebuild with Java 17. A Java 25-targeted artifact cannot be rolled back merely
+rebuild with Java 17. A Java 21-targeted artifact cannot be rolled back merely
 by selecting a Java 17 runtime. Retain the preceding artifact and avoid schema
 auto-update throughout the comparison.
 
