@@ -13,7 +13,7 @@
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 53 |
-| Test classes / methods | 6 / 17 (after first characterization slice) |
+| Test classes / methods | 7 / 21 (including standalone MVC tests) |
 | CI | None found |
 | Containers | None found |
 
@@ -120,6 +120,6 @@ combine safety-net work with the Spring Boot upgrade.
 ## Discovery limits
 
 This profile is based on static inspection plus baseline commands. Production
-compilation, dependency resolution, seventeen tests, and JAR packaging
+compilation, dependency resolution, twenty-one tests, and JAR packaging
 are verified. Runtime behavior, generated schema, PostgreSQL integration, and
 OpenAPI output remain unverified.

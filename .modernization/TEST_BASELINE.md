@@ -11,7 +11,7 @@
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Build success; 17 tests pass |
+| Current result | Build success; 21 tests pass |
 
 ## Commands and observed result
 
@@ -56,6 +56,7 @@ adds eight tests in two classes, for seventeen tests in total:
 | Sale service | 3 | Mockito unit tests |
 | Stock movement service | 3 | Mockito characterization tests |
 | Grocery resource | 5 | Direct controller-method characterization tests |
+| Grocery HTTP contracts | 4 | Standalone MockMvc with application Jackson modules |
 
 All tests use JUnit Jupiter annotations and Mockito's Jupiter extension. The
 original tests import JUnit 4 assertions; the new tests use Jupiter assertions.
@@ -70,8 +71,8 @@ despite the controller documentation promising 404. Correct this separately.
 
 No automated coverage was found for:
 
-- HTTP routing, JSON payloads, validation, or exception translation (the new
-  controller tests invoke Java methods directly, not the HTTP stack)
+- HTTP contracts outside the grocery create/get and validation/error cases
+  covered by standalone MockMvc; full Spring Boot web configuration is untested
 - repository queries and JPA mappings
 - application-context startup and configuration binding
 - PostgreSQL compatibility or Testcontainers execution
@@ -87,6 +88,6 @@ No coverage measurement or CI workflow was found.
 
 - Java 17 and Maven wrapper prerequisites are reproducible.
 - `./mvnw -version` reports Maven 3.9.16 and Temurin 17.0.20.1.
-- `./mvnw clean verify` succeeds with 17 passing tests after characterization.
+- `./mvnw clean verify` succeeds with 21 passing tests after MVC characterization.
 - The original bootstrap and test-compilation failures are recorded separately.
 - No framework version or application behavior was changed.
