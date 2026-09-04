@@ -117,7 +117,7 @@ public class SaleService {
 		productIdList.forEach(id -> {
 			Optional<Product> optional = productRepository.findById(id);
 			if (optional.isPresent())
-				productList.add(optional.get());
+				productList.add(optional.orElseThrow());
 		});
 		return productMapper.toDto(productList);
 	}

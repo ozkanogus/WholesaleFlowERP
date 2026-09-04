@@ -49,7 +49,7 @@ selection follows the PostgreSQL session timezone. See
 
 ## Technology baseline
 
-- Java 17 is declared in Maven (a local JDK is required).
+- Java 21 is declared in Maven (verified with Temurin 21.0.12.1).
 - Spring Boot 4.0.8 (verified migration checkpoint; deployment hardening remains)
 - Maven
 - Spring MVC and embedded Tomcat
@@ -60,12 +60,19 @@ selection follows the PostgreSQL session timezone. See
 
 ## Running locally
 
-Use a Java 17 JDK and the committed Maven wrapper:
+Use a Java 21 JDK and the committed Maven wrapper. Set `JAVA_HOME` to your JDK
+installation and select the same JDK for your IDE project and Maven runner.
+The local side-by-side installation used for verification is
+`/Users/ozkanogus/.local/opt/temurin-21`; no global Java setting was changed.
 
 ```bash
+export JAVA_HOME=/Users/ozkanogus/.local/opt/temurin-21
 ./mvnw clean verify
 ./mvnw spring-boot:run
 ```
+
+Java 17 remains available for rebuilding the previous checkpoint, but cannot run
+the Java 21-targeted artifact. See [Java 21 verification](.modernization/JAVA21_RESULT.md).
 
 The default application configuration expects PostgreSQL at
 `jdbc:postgresql://localhost:5432/grocery` and listens on port `8082`.

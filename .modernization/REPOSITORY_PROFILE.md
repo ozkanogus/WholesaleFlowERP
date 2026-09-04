@@ -7,7 +7,7 @@
 | Repository | `ozkanogus/SpringBootSampleERP` |
 | Analyzed revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
 | Build | Maven, single-module JAR |
-| Language target | Java 17 (verified with Temurin 17.0.20.1) |
+| Language target | Java 21 (verified with Temurin 21.0.12.1) |
 | Framework | Spring Boot 4.0.8 (Stage 4d verified) |
 | Application entry point | `tr.com.erpsample.grocery.GroceryApp` |
 | Runtime database | PostgreSQL |
@@ -80,6 +80,9 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Build and dependency observations
 
+- Java 21 stage verified 2026-09-04: Modernizer 2.7.0 supports target bytecode;
+  MapStruct 1.4.2.Final and existing processors compile unchanged. See JAVA21_RESULT.md.
+
 - Stage 4d: Boot 4.0.8 / Springdoc 3.0.3, Hibernate 7.2 and Jackson 3 MVC.
   See BOOT40_RESULT.md. Older bullets below retain checkpoint history.
 
@@ -107,7 +110,7 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Modernization pressure points
 
-1. **Reproducibility:** keep the restored Maven wrapper, verified Java 17
+1. **Reproducibility:** keep the restored Maven wrapper, verified Java 21
    toolchain, and green `clean verify` baseline as the canonical build entry.
 2. **Safety net:** characterize REST contracts, persistence mappings, startup,
    error handling, and purchase/sale stock effects.

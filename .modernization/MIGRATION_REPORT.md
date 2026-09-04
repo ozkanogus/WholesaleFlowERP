@@ -4,6 +4,11 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Java 21 stage is GREEN: Temurin 21.0.12.1, compiler release 21, Modernizer 2.7.0.
+40 default and 56 PostgreSQL-profile tests pass; packaged runtime, OpenAPI and
+schema comparison pass. One guarded Optional call was modernized without changing
+behavior. See JAVA21_RESULT.md. No remote push or deployment.
+
 Stage 4d is GREEN: Boot 4.0.8 / Springdoc 3.0.3, Java 17 unchanged.
 56 full-profile / 40 default tests, fresh PostgreSQL runtime checks and unchanged
 OpenAPI/schema comparisons pass. See BOOT40_RESULT.md for corrections, retained

@@ -2,7 +2,9 @@
 
 ## Baseline context
 
-Latest: Stage 4d on Boot 4.0.8 passes 56 full-profile and 40 default tests.
+Latest: Java 21 / Boot 4.0.8 passes 56 full-profile and 40 default tests with
+Modernizer 2.7.0, no failures/errors/skips. See JAVA21_RESULT.md.
+Stage 4d on Java 17 previously passed the same totals.
 A new context test verifies MVC uses Jackson 3 with Hibernate 7 module registration
 and no Jackson 2 application mapper bean. See BOOT40_RESULT.md.
 Stage 4c on Boot 3.5.16 previously passed 55 full-profile and 39 default tests.
@@ -23,8 +25,8 @@ and packaged PostgreSQL smoke evidence.
 | Original revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
 | Date | 2026-09-04 |
 | Operating system | macOS 26.5.1, arm64 |
-| Declared Java | 17 |
-| Available Java | Temurin 17.0.20.1 |
+| Declared Java | 21 |
+| Available Java | Temurin 21.0.12.1; Java 17 retained for rollback |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
 | Current result | Default: 40 pass; PostgreSQL profile: 56 pass (39 Surefire + 17 Failsafe) |
