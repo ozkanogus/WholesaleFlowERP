@@ -11,7 +11,7 @@
 | Available Java | Temurin 17.0.20.1 |
 | Maven wrapper | Wrapper 3.3.4, Maven 3.9.16 |
 | Build entry point | `./mvnw clean verify` |
-| Current result | Build success; 21 tests pass |
+| Current result | Build success; 24 tests pass |
 
 ## Commands and observed result
 
@@ -46,7 +46,8 @@ Maven also reports a pre-existing model warning: the
 ## Existing automated tests
 
 The original four classes contained nine tests. The first characterization slice
-adds eight tests in two classes, for seventeen tests in total:
+added eight tests in two classes. MVC, persistence, and context tests bring the
+current total to twenty-four:
 
 | Area | Tests | Style |
 | --- | ---: | --- |
@@ -57,6 +58,8 @@ adds eight tests in two classes, for seventeen tests in total:
 | Stock movement service | 3 | Mockito characterization tests |
 | Grocery resource | 5 | Direct controller-method characterization tests |
 | Grocery HTTP contracts | 4 | Standalone MockMvc with application Jackson modules |
+| Persistence mappings | 2 | DataJpaTest with isolated H2 and rollback |
+| Application context | 1 | SpringBootTest with isolated H2 and mocked DataPopulator |
 
 All tests use JUnit Jupiter annotations and Mockito's Jupiter extension. The
 original tests import JUnit 4 assertions; the new tests use Jupiter assertions.
@@ -73,8 +76,9 @@ No automated coverage was found for:
 
 - HTTP contracts outside the grocery create/get and validation/error cases
   covered by standalone MockMvc; full Spring Boot web configuration is untested
-- repository queries and JPA mappings
-- application-context startup and configuration binding
+- purchase/sale line-item persistence, cascades, and native reporting queries
+- default runtime configuration and demo-data startup (the context smoke test
+  uses H2 create-drop and replaces the random DataPopulator with a mock)
 - PostgreSQL compatibility or Testcontainers execution
 - stock movement update/delete edge cases
 - transaction and rollback behavior
@@ -88,6 +92,6 @@ No coverage measurement or CI workflow was found.
 
 - Java 17 and Maven wrapper prerequisites are reproducible.
 - `./mvnw -version` reports Maven 3.9.16 and Temurin 17.0.20.1.
-- `./mvnw clean verify` succeeds with 21 passing tests after MVC characterization.
+- `./mvnw clean verify` succeeds with 24 passing tests after persistence/context coverage.
 - The original bootstrap and test-compilation failures are recorded separately.
 - No framework version or application behavior was changed.
