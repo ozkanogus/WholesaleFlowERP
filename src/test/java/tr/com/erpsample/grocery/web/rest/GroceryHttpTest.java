@@ -36,7 +36,7 @@ class GroceryHttpTest {
     void configureMvc() {
         JacksonConfiguration config = new JacksonConfiguration();
         ObjectMapper json = new ObjectMapper().registerModules(config.javaTimeModule(),
-            config.jdk8TimeModule(), config.hibernate5Module(), config.problemModule(),
+            config.jdk8TimeModule(), config.hibernate6Module(), config.problemModule(),
             config.constraintViolationProblemModule());
         mvc = MockMvcBuilders.standaloneSetup(new GroceryResource(service, repository))
             .setMessageConverters(new MappingJackson2HttpMessageConverter(json))

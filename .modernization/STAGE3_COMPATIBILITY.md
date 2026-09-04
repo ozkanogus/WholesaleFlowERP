@@ -1,6 +1,8 @@
 # Stage 3 entry proposal — Jakarta / Boot 3.1
 
-Prepared 2026-09-04. Status: PROPOSED, not approved for execution.
+Prepared 2026-09-04. Stage 3a approved and verified GREEN on 2026-09-04.
+The proposal below is retained as the scoped decision record; execution evidence
+and deviations are in `STAGE3_RESULT.md`. Later checkpoints remain unapproved.
 Current baseline: Boot 2.7.18, Java 17, Maven 3.9.16; 46 verified tests.
 No dependencies or production code were changed during this assessment.
 

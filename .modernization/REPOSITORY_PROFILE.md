@@ -8,7 +8,7 @@
 | Analyzed revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
 | Build | Maven, single-module JAR |
 | Language target | Java 17 (verified with Temurin 17.0.20.1) |
-| Framework | Spring Boot 2.7.18 (Stage 1 verified) |
+| Framework | Spring Boot 3.1.12 (Stage 3a verified) |
 | Application entry point | `tr.com.erpsample.grocery.GroceryApp` |
 | Runtime database | PostgreSQL |
 | Test database | H2 |
@@ -80,8 +80,9 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 ## Build and dependency observations
 
-- The Spring Boot parent and explicit Spring Boot property are both `2.7.18`,
-  upgraded together from `2.6.3` in Stage 1; Java 17 is unchanged.
+- The Spring Boot parent/property are now `3.1.12`, after the `2.7.18` bridge.
+  Java 17 is unchanged. See `STAGE3_RESULT.md` for current resolved dependencies;
+  the original dependency observations below are historical discovery evidence.
 - The POM declares Java 17 and Maven 3.3.9.
 - The original configured start class used `groceryApp` instead of `GroceryApp`.
   This was corrected after a post-packaging regression test reproduced the
@@ -103,8 +104,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
    error handling, and purchase/sale stock effects.
 3. **Domain completion:** identify missing wholesale workflows and distinguish
    deliberate scope from abandoned implementation before expanding the model.
-4. **Spring Boot 3 boundary:** 81 production imports use `javax.*`; moving to
-   Boot 3 requires a coordinated Jakarta migration and compatible library lines.
+4. **Spring Boot 3 boundary:** the original 81 production javax imports were
+   migrated to Jakarta. Stage 3a passes; later minor checkpoints remain pending.
 5. **Database evolution:** replace schema auto-update with an explicit,
    versioned migration strategy after capturing the current schema behavior.
 6. **Configuration:** externalize credentials and define clear local/test

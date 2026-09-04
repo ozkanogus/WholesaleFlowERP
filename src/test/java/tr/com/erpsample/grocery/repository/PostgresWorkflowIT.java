@@ -7,7 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Set;
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ import tr.com.erpsample.grocery.service.dto.*;
 
 @SpringBootTest(properties = {
     "spring.jpa.hibernate.ddl-auto=validate",
-    "spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL82Dialect"
+    "spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect"
 })
 @AutoConfigureMockMvc
 class PostgresWorkflowIT {
