@@ -5,8 +5,9 @@ are verified; see CONFIGURATION_HARDENING_RESULT.md. Next: assess a versioned
 schema baseline, then CI, broader tests and security/deployment decisions in
 separate stages. No authentication policy or deployment target is assumed.
 
-Database stage proposal: [Flyway baseline and verification gates](DATABASE_MIGRATION_PLAN.md).
-Tool choice and execution await approval; runtime schema auto-update is unchanged.
+Database stage is GREEN: [Flyway baseline and verification gates](DATABASE_MIGRATION_PLAN.md)
+and [measured result](FLYWAY_RESULT.md). Runtime uses migrations plus Hibernate
+validation. Existing untracked schemas require separately reviewed adoption.
 
 Prepared: 2026-09-04. Owner/approver: repository owner.
 Planning does not authorize execution. Stage 1 was approved and verified on

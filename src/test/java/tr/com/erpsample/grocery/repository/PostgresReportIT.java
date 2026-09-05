@@ -10,6 +10,8 @@ import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.flyway.autoconfigure.FlywayAutoConfiguration;
 
 /** Native SQL fixtures intentionally isolate reporting from service/cascade behavior. */
 @DataJpaTest(properties = {
@@ -17,6 +19,7 @@ import org.springframework.test.context.DynamicPropertySource;
     "spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect"
 })
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@ImportAutoConfiguration(FlywayAutoConfiguration.class)
 class PostgresReportIT {
     @Autowired private JdbcTemplate jdbc;
     @Autowired private SaleRepository sales;
@@ -31,6 +34,7 @@ class PostgresReportIT {
         properties.add("spring.datasource.username", () -> required("GROCERY_TEST_DB_USER"));
         properties.add("spring.datasource.password", () -> required("GROCERY_TEST_DB_PASSWORD"));
         properties.add("spring.datasource.driver-class-name", () -> "org.postgresql.Driver");
+        properties.add("spring.flyway.enabled", () -> "true");
     }
 
     private static String required(String name) {

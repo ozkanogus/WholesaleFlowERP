@@ -23,6 +23,12 @@ class PackagedApplicationIT {
                     "spring.datasource.password", "grocery.demo-data.enabled"}) {
                 assertFalse(properties.containsKey(key), key + " must be supplied externally");
             }
+            assertEquals("validate", properties.getProperty("spring.jpa.hibernate.ddl-auto"));
+            assertEquals("false", properties.getProperty("spring.flyway.baseline-on-migrate"));
+            assertEquals("true", properties.getProperty("spring.flyway.clean-disabled"));
+            assertEquals("true", properties.getProperty("spring.flyway.validate-on-migrate"));
+            assertNotNull(jar.getJarEntry(
+                "BOOT-INF/classes/db/migration/V1__initial_schema.sql"));
         }
     }
 

@@ -54,6 +54,7 @@ selection follows the PostgreSQL session timezone. See
 - Maven
 - Spring MVC and embedded Tomcat
 - Spring Data JPA and Hibernate
+- Flyway 11.14.1 for versioned PostgreSQL schema migrations
 - PostgreSQL for local runtime; H2 is configured for tests
 - MapStruct and Lombok
 - Springdoc OpenAPI UI
@@ -84,9 +85,11 @@ The initializer is not a migration tool or a reliable repair of partially seeded
 data. Keep it disabled for real data. Tests use isolated settings and explicit
 fixtures; no local PostgreSQL password is needed for the default build.
 
-Schema auto-update is still a known limitation, pending versioned migrations.
-Use `SPRING_JPA_HIBERNATE_DDL_AUTO=validate` with a prepared schema for safe runtime
-checks. `.env` files are ignored by Git but are not automatically loaded by Spring
+Flyway applies immutable migrations from `src/main/resources/db/migration` before
+Hibernate validates the schema. A new empty database is created by V1. Existing
+non-empty databases without Flyway history intentionally fail startup; follow the
+reviewed adoption procedure in `.modernization/FLYWAY_RESULT.md` and never enable
+automatic baselining. `.env` files are ignored by Git but are not automatically loaded by Spring
 Boot. Do not commit passwords. Previously committed credentials remain in Git
 history and must be rotated anywhere they were reused.
 
@@ -120,7 +123,7 @@ for the exact result and current test gaps.
 Discovery findings are recorded in
 `.modernization/REPOSITORY_PROFILE.md`. The build baseline is reproducible;
 the Boot 4.0 checkpoint is verified in `.modernization/BOOT40_RESULT.md`.
-Deployment hardening and broader domain coverage remain. Because the application never
+CI, security/deployment hardening and broader domain coverage remain. Because the application never
 entered production, verified defects and incomplete behavior may be corrected,
 but each change should document its intended business rule and remain reviewable.
 
