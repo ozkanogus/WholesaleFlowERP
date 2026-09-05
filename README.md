@@ -95,6 +95,11 @@ history and must be rotated anywhere they were reused.
 
 ## Tests
 
+GitHub Actions runs both commands below on Temurin 21. The PostgreSQL job starts
+an empty PostgreSQL 18 service so Flyway V1 and Hibernate validation are exercised.
+The workflow is locally validated; its first hosted run requires these commits to
+be pushed. It does not deploy or publish artifacts.
+
 The default build runs 44 tests across 14 unit, MVC, persistence, context,
 server and packaging test classes:
 

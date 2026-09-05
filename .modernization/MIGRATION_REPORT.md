@@ -4,6 +4,10 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+CI configuration is locally verified: immutable action pins, Temurin 21 default
+and isolated PostgreSQL 18/Flyway jobs. Actionlint and both workflow commands pass.
+Hosted execution is not run because no remote push is authorized; see CI_RESULT.md.
+
 Flyway schema baseline is GREEN: V1 reproduces the established PostgreSQL schema,
 Hibernate validates instead of updating, and unsafe automatic baseline/clean are
 disabled. Fresh, repeat, checksum-rejection and legacy-rejection gates pass with

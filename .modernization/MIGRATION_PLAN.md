@@ -9,6 +9,10 @@ Database stage is GREEN: [Flyway baseline and verification gates](DATABASE_MIGRA
 and [measured result](FLYWAY_RESULT.md). Runtime uses migrations plus Hibernate
 validation. Existing untracked schemas require separately reviewed adoption.
 
+CI workflow configuration is locally verified; hosted execution remains a gate
+after an authorized push. See CI_RESULT.md. Coverage, security policy and
+deployment remain separate decisions.
+
 Prepared: 2026-09-04. Owner/approver: repository owner.
 Planning does not authorize execution. Stage 1 was approved and verified on
 2026-09-04. Stages 2, 3a–3e and 4a–4d are verified; see BOOT40_RESULT.md.

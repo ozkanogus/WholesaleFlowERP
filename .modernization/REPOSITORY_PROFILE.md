@@ -14,7 +14,7 @@
 | Test database | H2 |
 | Production Java files | 54 |
 | Test classes / invocations | 16 / 60 (44 default plus 16 opt-in PostgreSQL cases) |
-| CI | None found |
+| CI | GitHub Actions workflow configured; hosted run not yet observed |
 | Containers | None found |
 
 ## Project history and modernization posture
@@ -125,7 +125,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
    profiles without changing defaults accidentally.
 7. **Dependency cleanup:** remove redundant or misplaced declarations only after
    the baseline is green and each change can be verified.
-8. **Automation:** add CI after the canonical build command is reproducible.
+8. **Automation:** observe both configured GitHub Actions jobs after an authorized
+   push, then decide branch-protection requirements.
 
 ## Recommended next phase
 
