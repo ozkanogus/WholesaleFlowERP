@@ -2,6 +2,10 @@
 
 ## Baseline context
 
+CI configuration repeats the 44-test default build and 60-test Flyway/PostgreSQL
+build on Temurin 21. Both commands and actionlint pass locally; hosted execution
+is not run until an authorized push. See CI_RESULT.md.
+
 Flyway baseline: 44 default / 60 PostgreSQL-profile tests pass. PostgreSQL tests
 run after V1 migration and Hibernate validation; packaged guards assert V1 and
 safe defaults. Fresh/repeat/negative migration gates are recorded in FLYWAY_RESULT.md.
@@ -154,7 +158,8 @@ No automated coverage was found for:
 - security expectations
 - packaged application startup
 
-No coverage measurement or CI workflow was found.
+No coverage measurement is configured. The CI workflow is locally validated but
+has not yet been observed on a hosted runner.
 
 ## Baseline repair result
 

@@ -46,6 +46,9 @@ requires backup, catalog comparison and explicit owner approval.
 
 Use a Java 21 JDK through explicit `JAVA_HOME` and the committed Maven wrapper.
 Keep IDE builds from modifying Maven's `target` directory during verification.
+Keep `.github/workflows/ci.yml` aligned with both canonical build commands. Pin
+actions to immutable commit SHAs, retain read-only permissions, and do not add
+deployment, publication or secrets without explicit owner approval.
 The minimum repository check is:
 
 ```bash
