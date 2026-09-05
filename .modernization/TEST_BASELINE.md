@@ -2,6 +2,10 @@
 
 ## Baseline context
 
+Flyway baseline: 44 default / 60 PostgreSQL-profile tests pass. PostgreSQL tests
+run after V1 migration and Hibernate validation; packaged guards assert V1 and
+safe defaults. Fresh/repeat/negative migration gates are recorded in FLYWAY_RESULT.md.
+
 Configuration hardening: 44 default / 60 PostgreSQL-profile tests pass.
 Three conditional-demo tests and one packaged-configuration guard were added.
 Existing enforced DataPopulator mock tests explicitly enable the conditional bean.
@@ -145,7 +149,8 @@ No automated coverage was found for:
 - Testcontainers execution
 - stock movement update/delete edge cases
 - rollback on failures other than the covered foreign-key/forced-failure cases
-- schema creation or migration
+- migration rollback/down scripts and automatic drift detection beyond checksum,
+  Hibernate validation and the recorded catalog comparison
 - security expectations
 - packaged application startup
 

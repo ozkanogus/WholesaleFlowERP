@@ -4,6 +4,11 @@ Updated: 2026-09-04.
 
 ## Outcome
 
+Flyway schema baseline is GREEN: V1 reproduces the established PostgreSQL schema,
+Hibernate validates instead of updating, and unsafe automatic baseline/clean are
+disabled. Fresh, repeat, checksum-rejection and legacy-rejection gates pass with
+44 default / 60 PostgreSQL tests. See FLYWAY_RESULT.md. No existing database was adopted.
+
 Configuration hardening is GREEN: external runtime connection settings and opt-in
 demo initialization, with 44 default / 60 PostgreSQL-profile tests passing.
 Packaged empty-default and enabled-demo startup checks pass. See

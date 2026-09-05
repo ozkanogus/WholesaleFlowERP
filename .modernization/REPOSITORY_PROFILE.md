@@ -70,9 +70,9 @@ job integration was found. Actuator and Springdoc dependencies are present.
 
 - Spring Data JPA with Hibernate and HikariCP.
 - PostgreSQL is configured for local runtime; H2 is configured for tests.
-- `spring.jpa.hibernate.ddl-auto=update` is present for the runtime profile.
-- Unused Liquibase properties registration was removed in Stage 4d; no changelog,
-  migration engine or schema migration was introduced.
+- Flyway 11.14.1 owns PostgreSQL schema creation through immutable SQL migrations;
+  Hibernate defaults to validation. V1 preserves the verified seven-table schema
+  and shared sequence. See FLYWAY_RESULT.md.
 - Runtime URL, username and password are externalized; no bundled connection
   defaults remain. Historical committed credentials still require rotation if reused.
 - Demo initialization is opt-in via GROCERY_DEMO_DATA_ENABLED=true; default startup
@@ -119,8 +119,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
    deliberate scope from abandoned implementation before expanding the model.
 4. **Spring Boot 3 boundary:** the original 81 production javax imports were
    migrated to Jakarta. All approved Boot 3 checkpoints through 3.5 pass.
-5. **Database evolution:** replace schema auto-update with an explicit,
-   versioned migration strategy after capturing the current schema behavior.
+5. **Database evolution:** add all future changes as reviewed immutable V2+
+   migrations; never automatically baseline an existing schema.
 6. **Configuration:** externalize credentials and define clear local/test
    profiles without changing defaults accidentally.
 7. **Dependency cleanup:** remove redundant or misplaced declarations only after

@@ -39,6 +39,10 @@ Runtime database connection settings must come from external configuration.
 Keep demo initialization disabled except in explicitly disposable databases.
 Tests that replace DataPopulator with an enforced mock explicitly enable the
 conditional bean; do not weaken those replacement assertions.
+Flyway owns PostgreSQL schema changes. Never edit an applied migration, enable
+baseline-on-migrate/clean, or restore Hibernate update. Add reviewed immutable
+V2+ migrations and verify them on a disposable database. Existing schema adoption
+requires backup, catalog comparison and explicit owner approval.
 
 Use a Java 21 JDK through explicit `JAVA_HOME` and the committed Maven wrapper.
 Keep IDE builds from modifying Maven's `target` directory during verification.

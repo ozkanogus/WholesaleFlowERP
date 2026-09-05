@@ -1,7 +1,8 @@
 # Versioned PostgreSQL schema plan
 
-2026-09-04. Status: PROPOSED; approve the Flyway approach before implementation.
-No database writes, dependencies or runtime defaults changed during assessment.
+2026-09-04. Status: GREEN / COMPLETE after owner approval on 2026-09-05.
+See [FLYWAY_RESULT.md](FLYWAY_RESULT.md). The proposal below is retained as the
+approved stage contract.
 
 ## Target and rationale
 
