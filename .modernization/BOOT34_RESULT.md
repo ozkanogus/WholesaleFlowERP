@@ -34,7 +34,7 @@ Sources reviewed 2026-09-04:
 ## Results
 
 Environment: Temurin 17.0.20.1, Maven 3.9.16, macOS arm64, PostgreSQL 18.6.
-Working directory: `/Users/ozkanogus/Projects/SpringBootSampleERP`.
+Working directory: `/Users/ozkanogus/Projects/WholesaleFlowERP`.
 The upgraded PostgreSQL build passed 46 tests (29 Surefire + 17 Failsafe),
 zero failures/errors/skips, in 25.938 seconds. Default clean verify passed
 30 tests in 5.842 seconds. No source, test or configuration edits were needed.

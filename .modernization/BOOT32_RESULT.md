@@ -25,7 +25,7 @@ Sources reviewed 2026-09-04:
 
 ## Results
 
-Working directory: `/Users/ozkanogus/Projects/SpringBootSampleERP`; Temurin
+Working directory: `/Users/ozkanogus/Projects/WholesaleFlowERP`; Temurin
 17.0.20.1, Maven 3.9.16, macOS arm64, PostgreSQL 18.6.
 
 The 46-test Boot 3.1 baseline passed. Upgraded `./mvnw -B -ntp

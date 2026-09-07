@@ -24,7 +24,7 @@ Dormant Undertow logger settings were left untouched as unrelated cleanup.
 
 ## Verification
 
-Working directory: `/Users/ozkanogus/Projects/SpringBootSampleERP`.
+Working directory: `/Users/ozkanogus/Projects/WholesaleFlowERP`.
 Environment: Temurin 17.0.20.1, Maven 3.9.16, macOS arm64, PostgreSQL 18.6.
 
 - `./mvnw -B -ntp -Dtest=WebServerTest test`: pre-removal server observation passed.

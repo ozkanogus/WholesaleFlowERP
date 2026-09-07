@@ -26,7 +26,7 @@ or Hibernate 5 runtime dependencies. This is not a security vulnerability audit.
 
 ## Verification
 
-Working directory: `/Users/ozkanogus/Projects/SpringBootSampleERP`.
+Working directory: `/Users/ozkanogus/Projects/WholesaleFlowERP`.
 Temurin 17.0.20.1, Maven 3.9.16, macOS arm64, PostgreSQL 18.6.
 
 - Before changes: `./mvnw -Pdev,postgres-tests clean verify`: 46 passed.

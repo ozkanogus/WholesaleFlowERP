@@ -20,7 +20,7 @@ that V1 and the safe configuration are present.
 ## Verification
 
 Environment: Temurin 21.0.12.1, Boot 4.0.8, Maven wrapper 3.9.16,
-PostgreSQL 18.6. Working directory: /Users/ozkanogus/Projects/SpringBootSampleERP.
+PostgreSQL 18.6. Working directory: /Users/ozkanogus/Projects/WholesaleFlowERP.
 
 | Gate | Result |
 | --- | --- |

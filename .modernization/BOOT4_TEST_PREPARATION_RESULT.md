@@ -40,7 +40,7 @@ controller guard; the final cases include a valid name to reach each ID guard.
 (34 Surefire + 17 Failsafe), zero failures/errors/skips, 10.722 seconds.
 `./mvnw -B -ntp clean verify`: 35 cases passed, zero failures/errors/skips.
 Environment: Temurin 17.0.20.1, Maven 3.9.16, macOS arm64, PostgreSQL 18.6;
-working directory `/Users/ozkanogus/Projects/SpringBootSampleERP`.
+working directory `/Users/ozkanogus/Projects/WholesaleFlowERP`.
 PostgreSQL uses the existing dedicated grocery35_test with ddl-auto=validate.
 Local logs: `/private/tmp/grocery4a-{baseline,observe,observe-valid,focused,verify,default}.log`.
 

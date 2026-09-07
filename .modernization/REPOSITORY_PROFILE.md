@@ -4,12 +4,12 @@
 
 | Field | Observed value |
 | --- | --- |
-| Repository | `ozkanogus/SpringBootSampleERP` |
+| Repository | `ozkanogus/WholesaleFlowERP` |
 | Analyzed revision | `d4efa460aed4f697b9333d42898b4e388a23cfb3` |
 | Build | Maven, single-module JAR |
 | Language target | Java 21 (verified with Temurin 21.0.12.1) |
 | Framework | Spring Boot 4.0.8 (Stage 4d verified) |
-| Application entry point | `tr.com.erpsample.grocery.GroceryApp` |
+| Application entry point | `io.github.ozkanogus.wholesaleflow.WholesaleFlowApplication` |
 | Runtime database | PostgreSQL |
 | Test database | H2 |
 | Production Java files | 54 |
@@ -17,13 +17,13 @@
 | CI | GitHub Actions workflow configured; hosted run not yet observed |
 | Containers | None found |
 
-## Project history and modernization posture
+## Product history and modernization posture
 
-The owner developed this repository approximately four to five years before the
-2026 modernization effort for a real wholesale grocery market. Development ended
-because of a budget cut, the product remained incomplete, and it was never
-deployed. The source was subsequently published in the owner's personal GitHub
-account.
+WholesaleFlow ERP was originally developed approximately four to five years
+before the 2026 modernization effort for a real wholesale grocery market.
+Development ended because of a budget cut, the product remained incomplete, and
+it was never deployed. Development has resumed as an independently maintained
+business application.
 
 This lowers production migration risk: there are no live consumers, production
 data, or operational service-level commitments to preserve. It does not remove
@@ -38,7 +38,7 @@ keep behavioral work separate from mechanical framework migration.
 
 ## Business and architectural shape
 
-The application is a layered grocery ERP REST backend:
+WholesaleFlow ERP is a layered wholesale operations REST backend:
 
 ```mermaid
 flowchart TD
@@ -97,7 +97,8 @@ job integration was found. Actuator and Springdoc dependencies are present.
   Java 17 is unchanged. See `BOOT35_RESULT.md` for current evidence;
   the original dependency observations below are historical discovery evidence.
 - The POM declares Java 17 and Maven 3.3.9.
-- The original configured start class used `groceryApp` instead of `GroceryApp`.
+- The original configured start class used `groceryApp` instead of the then-current
+  `GroceryApp`. The application entry point is now `WholesaleFlowApplication`.
   This was corrected after a post-packaging regression test reproduced the
   manifest mismatch; the test now verifies that the manifest targets packaged classes.
 - The Maven wrapper was restored with wrapper 3.3.4, Maven 3.9.16, and an

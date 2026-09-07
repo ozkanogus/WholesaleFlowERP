@@ -1,13 +1,13 @@
 # PostgreSQL smoke-test evidence
 
 Date: 2026-09-04. Platform: macOS arm64, Temurin 17.0.20.1,
-Postgres.app PostgreSQL 18.6. Artifact includes the corrected `GroceryApp`
+Postgres.app PostgreSQL 18.6. Artifact includes the corrected `WholesaleFlowApplication`
 manifest entry point. This was a manual smoke test, not an automated regression.
 
 ## Isolation
 
 A new cluster was initialized outside the repository under
-`~/.local/share/SpringBootSampleERP/pgdata`, listening only on `127.0.0.1:55432`.
+`~/.local/share/WholesaleFlowERP/pgdata`, listening only on `127.0.0.1:55432`.
 The dedicated database is `grocery_modernization`, owned by `ozkanogus`.
 TCP authentication uses SCRAM with a generated password stored in a private local
 file, not version control. No existing database was used.

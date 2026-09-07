@@ -19,7 +19,7 @@ are unchanged. The constraint-violation URI remains a wire identifier.
 
 ## Verification
 
-Working directory: /Users/ozkanogus/Projects/SpringBootSampleERP.
+Working directory: /Users/ozkanogus/Projects/WholesaleFlowERP.
 Temurin 17.0.20.1, Maven 3.9.16, PostgreSQL 18.6.
 
 | Check | Result |

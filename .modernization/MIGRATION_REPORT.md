@@ -85,7 +85,7 @@ fixes or unmanaged dependency replacements were required. Work is recorded on
 
 ## Verification
 
-Working directory: `/Users/ozkanogus/Projects/SpringBootSampleERP`.
+Working directory: `/Users/ozkanogus/Projects/WholesaleFlowERP`.
 Environment: macOS arm64, Temurin 17.0.20.1, PostgreSQL 18.6.
 
 ```sh
@@ -111,7 +111,7 @@ set `SPRING_DATASOURCE_URL` to its JDBC URL at `127.0.0.1:55432`, set
 configuration, and set `SERVER_ADDRESS=127.0.0.1` and `SERVER_PORT=18082`. Run:
 
 ```sh
-"$JAVA_HOME/bin/java" -jar target/grocery-0.0.1-SNAPSHOT.jar
+"$JAVA_HOME/bin/java" -jar target/wholesale-flow-erp-0.0.1-SNAPSHOT.jar
 ```
 
 Repeat the endpoints in `POSTGRES_SMOKE_TEST.md`. This run also checked empty
