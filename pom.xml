@@ -12,12 +12,12 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>tr.com.erpsample.grocery</groupId>
-	<artifactId>grocery</artifactId>
+	<groupId>io.github.ozkanogus.wholesaleflow</groupId>
+	<artifactId>wholesale-flow-erp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>grocery</name>
-	<description>Description for grocery</description>
+	<name>WholesaleFlow ERP</name>
+	<description>Wholesale purchasing, sales, inventory, and stock-movement management backend</description>
 
 	<repositories>
 	</repositories>
@@ -30,7 +30,7 @@
 		<!-- Build properties -->
 		<maven.version>3.3.9</maven.version>
 		<java.version>21</java.version>
-		<start-class>tr.com.erpsample.grocery.GroceryApp</start-class>
+		<start-class>io.github.ozkanogus.wholesaleflow.WholesaleFlowApplication</start-class>
 
 		<spring-boot.version>4.0.8</spring-boot.version>
 		<postgres.test.exclude>**/Postgres*IT*</postgres.test.exclude>

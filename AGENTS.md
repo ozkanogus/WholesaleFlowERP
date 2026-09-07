@@ -2,11 +2,11 @@
 
 ## Purpose
 
-This repository is a modernization pilot based on an unfinished wholesale
-grocery application that was never deployed. Preserve understood business intent
-while improving its build, tests, behavior, maintainability, and platform stack
-through small, independently reviewable changes. Existing behavior is evidence,
-not an immutable production contract.
+WholesaleFlow ERP is an unfinished wholesale operations application originally
+designed for a real grocery market but never deployed. Preserve understood
+business intent while completing its workflows and improving its tests, behavior,
+maintainability, and platform through small independently reviewable changes.
+Existing behavior is evidence, not an immutable production contract.
 
 ## Required workflow
 

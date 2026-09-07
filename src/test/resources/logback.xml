@@ -4,7 +4,7 @@
 <configuration scan="true">
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-    <logger name="tr.com.erpsample.grocery" level="INFO"/>
+    <logger name="io.github.ozkanogus.wholesaleflow" level="INFO"/>
 
     <logger name="tech.jhipster" level="WARN"/>
 

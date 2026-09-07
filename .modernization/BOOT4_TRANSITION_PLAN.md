@@ -63,7 +63,7 @@ an execution gate, not a reason to upgrade unrelated libraries preemptively.
    4.0.8 JAR APIs. MockitoBean stays unchanged. Preserve all test methods and
    meaningful assertions. Four legacy org.junit.Assert imports may be adapted
    to Jupiter only with overload/expected-actual semantics checked.
-6. GroceryApp explicitly registers unused LiquibaseProperties although no
+6. WholesaleFlowApplication explicitly registers unused LiquibaseProperties although no
    migration engine/changelog exists. Proposed: remove that inert registration
    and its imports, rather than install/activate Liquibase. This is included
    explicitly in the approval scope; do not introduce schema migration.

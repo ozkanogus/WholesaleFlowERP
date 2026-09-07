@@ -92,7 +92,7 @@ not suppressed. Existing framework/model warnings remain separate debt.
 
 ## Evidence and recovery
 
-Working directory: /Users/ozkanogus/Projects/SpringBootSampleERP.
+Working directory: /Users/ozkanogus/Projects/WholesaleFlowERP.
 Maven wrapper 3.9.16; local PostgreSQL 18.6, loopback port 55432.
 Builds use explicit JAVA_HOME and private GROCERY_TEST_DB_* environment values.
 New databases grocery21_test, grocery21_runtime17 and grocery21_smoke were

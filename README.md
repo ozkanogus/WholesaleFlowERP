@@ -1,19 +1,19 @@
-# SpringBootSampleERP
+# WholesaleFlow ERP
 
-SpringBootSampleERP is a sample grocery ERP backend built with Spring Boot. It
-manages groceries, products, purchases, sales, and the stock movements produced
-by purchase and sale operations.
+WholesaleFlow ERP is a wholesale operations backend for managing grocery
+locations, products, purchasing, sales, and the stock movements produced by
+commercial transactions.
 
-The code began several years ago as an unfinished application for a real
-wholesale grocery market. Budget constraints ended development before deployment,
-so it never went live and has no production data or production compatibility
-commitments. The repository now serves as both a modernization case study and a
-foundation that may be corrected and completed.
+The product began as a system for a real wholesale grocery market. Development
+stopped after a budget cut before the original implementation was completed or
+deployed. It contains no production data or live-service compatibility
+commitments, and development now continues as an independently maintained
+business application.
 
-> This repository is being used as a pilot for the
+> The repository also records a completed technical modernization using the
 > [Agentic Java Modernization](https://github.com/ozkanogus/agentic-java-modernization)
-> methodology. The verified checkpoint is Spring Boot 4.0.8 with native MVC
-> error handling. Further framework upgrades require separate verification.
+> methodology. Its verified checkpoint is Java 21 and Spring Boot 4.0.8.
+> Product completion and production readiness remain separate ongoing work.
 
 ## System at a glance
 
@@ -123,14 +123,16 @@ tests, and packages the executable JAR. The PostgreSQL profile adds 16 tests
 (60 total across 16 classes). See `.modernization/TEST_BASELINE.md`
 for the exact result and current test gaps.
 
-## Modernization status
+## Product and modernization status
 
 Discovery findings are recorded in
 `.modernization/REPOSITORY_PROFILE.md`. The build baseline is reproducible;
 the Boot 4.0 checkpoint is verified in `.modernization/BOOT40_RESULT.md`.
-CI, security/deployment hardening and broader domain coverage remain. Because the application never
-entered production, verified defects and incomplete behavior may be corrected,
-but each change should document its intended business rule and remain reviewable.
+Hosted CI confirmation, authentication/authorization, deployment design, broader
+domain coverage, and unfinished wholesale workflows remain. Because the original
+application never entered production, incomplete behavior may be completed and
+verified defects corrected, but each change should document its intended business
+rule and remain reviewable.
 
 ## Contributing
 

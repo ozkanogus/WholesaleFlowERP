@@ -19,7 +19,7 @@ Branch: codex/configuration-hardening. Status: GREEN.
 ## Evidence
 
 Java 21.0.12.1, Boot 4.0.8, Maven wrapper 3.9.16, PostgreSQL 18.6.
-Working directory: /Users/ozkanogus/Projects/SpringBootSampleERP.
+Working directory: /Users/ozkanogus/Projects/WholesaleFlowERP.
 
 | Check | Result |
 | --- | --- |

@@ -27,7 +27,7 @@ ObjectMapper application bean.
 
 ## Verification evidence
 
-Working directory: /Users/ozkanogus/Projects/SpringBootSampleERP.
+Working directory: /Users/ozkanogus/Projects/WholesaleFlowERP.
 Temurin 17.0.20.1, Maven wrapper 3.9.16, local PostgreSQL 18.6.
 
 | Check | Measured outcome |

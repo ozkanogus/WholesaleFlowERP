@@ -69,7 +69,7 @@ Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 ```
 
-The build produced `target/grocery-0.0.1-SNAPSHOT.jar` (approximately 56 MB).
+The build produced `target/wholesale-flow-erp-0.0.1-SNAPSHOT.jar` (approximately 56 MB).
 
 Maven also reports a pre-existing model warning: the
 `properties-maven-plugin` declaration has no version.
@@ -112,7 +112,7 @@ endpoints now return 404 with an empty body for missing records and retain 200
 with the DTO for existing records. No dependency upgrade was included.
 
 The packaged JAR originally named `groceryApp` as its Start-Class, but the class
-is `GroceryApp`. A Failsafe test reproduced the mismatch before correcting the
+is `WholesaleFlowApplication`. A Failsafe test reproduced the mismatch before correcting the
 POM. It now verifies the manifest's application and launcher entries exist in
 the JAR. This is an artifact check, not a process-startup or database test.
 
